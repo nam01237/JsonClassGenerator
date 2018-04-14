@@ -45,12 +45,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generate\NClassCreater.cs" />
+    <Compile Include="Generate\NArrayCreater.cs" />
+    <Compile Include="Generate\TempStringReader.cs" />
+    <Compile Include="ObjectInfo\NArray.cs" />
+    <Compile Include="ObjectInfo\NClass.cs" />
+    <Compile Include="ObjectInfo\NList.cs" />
+    <Compile Include="ObjectInfo\NReferenceType.cs" />
+    <Compile Include="ObjectInfo\NValueType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Analyze\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

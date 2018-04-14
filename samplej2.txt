@@ -1,0 +1,8 @@
+
+    {
+         "name" : "kim",
+         "age"  : 19,
+         "isAgree" : true,
+         "hobby" : null,
+	 "list" : [ 20, 30, 40 ]
+    }
