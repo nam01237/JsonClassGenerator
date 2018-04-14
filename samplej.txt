@@ -1,0 +1,25 @@
+[
+    {
+         "name" : "kim",
+         "age"  : 19,
+         "isAgree" : true,
+         "hobby" : null,
+	 "list" : [ 20, 30, 40 ]
+    },
+    {
+         "name" : "lee",
+         "age"  : 18,
+         "isAgree" : false,
+         "hobby" : "cycle",
+	 "list" :  [ 20, 30, 40 ]
+    },
+    {
+         "name" : "lee",
+         "age"  : 18,
+         "isAgree" : false,
+         "hobby" : "cycle",
+	 "list" : [ 1234 ]
+    },
+	40
+    
+]
