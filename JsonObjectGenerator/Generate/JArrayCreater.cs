@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace JsonObjectGenerator.Generate
 {
-    public class NArrayCreater
+    public class JArrayCreater
     {
         public string JSonString { get; set; }
         
-        public NArrayCreater(string jsonString)
+        public JArrayCreater(string jsonString)
         {
             JSonString = jsonString;
         }

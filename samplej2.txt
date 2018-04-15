@@ -3,6 +3,9 @@
          "name" : "kim",
          "age"  : 19,
          "isAgree" : true,
-         "hobby" : null,
-	 "list" : [ 20, 30, 40 ]
+	 "double" : 3.14,
+	 "bool" : true,
+	 "list" : [ 20, 30, 40 ],
+	 "null" : null,
+	 "type" : {}
     }

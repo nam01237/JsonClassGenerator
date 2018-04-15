@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JsonObjectGenerator.ObjectInfo
+namespace JsonObjectGenerator.ObjectInfo.Properties
 {
-    public class NValueType
+    class JReferenceType : JType
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonObjectGenerator.ObjectInfo
 {
-    class NReferenceType
+    class JArrayInfo
     {
     }
 }
