@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 
 namespace JsonObjectGenerator.ObjectInfo
 {
-    public class JClassInfo  : JObject
+    public class JClassInfo
     {
-        public List<JType> Properties { get; set; }
-        //public List<JValueType> ValueTypes { set;  get; }
-        //public List<JValueType> ReferenceTypes { set;  get; }
-        //public List<JListInfo> ListTypes { set;  get; }
+        public string Name { get; set; }
+        public List<JType> JTypes { get; set; }
     }
 }

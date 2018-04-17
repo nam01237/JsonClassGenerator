@@ -48,13 +48,21 @@ namespace JsonObjectGenerator
 
             //Console.WriteLine(jpn4.Count);
 
-            string str = TempStringReader.GetJsonString("../../../samplej2.txt");
-            JObject jObject = JObject.Parse(str);
+            string str = TempStringReader.GetJsonString("../../../samplej1.txt");
+            //JObject jObject = JObject.Parse(str);
 
-            JClassCreater jCreator = new JClassCreater();
+            //JClassCreater jCreator = new JClassCreater();
 
-            JClassInfo jClassInfo = jCreator.Create(jObject);
+            //JClassInfo jClassInfo = jCreator.Create(jObject);
 
+            //foreach (var item in jClassInfo.JTypes)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            JArray jArray = JArray.Parse(str);
+            JArrayCreater jArrayCreater = new JArrayCreater();
+            jArrayCreater.Create(jArray);
 
         }
     }

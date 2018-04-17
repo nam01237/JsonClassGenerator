@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonObjectGenerator.ObjectInfo.Properties
 {
-    class JReferenceType : JType
+    class JClassType : JType
     {
     }
 }
