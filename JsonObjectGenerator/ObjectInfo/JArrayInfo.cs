@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace JsonObjectGenerator.ObjectInfo
 {
-    public class JArrayInfo
+    public class JArrayInfo : JInfo
     {
-        public string Name { get; set; }
-        public JType Type { get;  }
+        public JInfo Element { get; set; }
+        public List<JClassInfo> ClassTypes { get; set; }
     }
 }

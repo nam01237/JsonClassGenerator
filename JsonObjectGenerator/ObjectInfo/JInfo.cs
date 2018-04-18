@@ -4,20 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JsonObjectGenerator.ObjectInfo.Properties
+namespace JsonObjectGenerator.ObjectInfo
 {
-    public abstract class JType
+    public abstract class JInfo
     {
-        protected JType()
-        {}
-
-
-        protected JType(string name, string type)
-        {
-            Name = name;
-            Type = type;
-        }
-
         public string Name { get; set; }
         public string Type { get; set; }
 

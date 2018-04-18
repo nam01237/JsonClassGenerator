@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JsonObjectGenerator.ObjectInfo.Properties
+namespace JsonObjectGenerator.ObjectInfo
 {
-    public class JValueType : JType
+    public class JValueInfo : JInfo
     {
     }
 }

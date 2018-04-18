@@ -15,27 +15,45 @@ namespace JsonObjectGenerator.Generate
 
         public JArrayCreater()
         {
-            _jArrayInfo = new JArrayInfo();
         }
 
         public JArrayInfo Create(JArray jArray)
         {
+            _jArrayInfo = new JArrayInfo();
             _jArray = jArray;
+
             SetType();
 
-            JArrayInfo jArrayInfo = new JArrayInfo();
-            return jArrayInfo;
+            return _jArrayInfo;
 
         }
 
         private void SetType()
         {
-           var count = from x in _jArray
+            int objCount = _jArray.Count(x => x.Type.ToString().Equals("Object"));
+
+            var typeList = _jArray.Select(x => x.Type.ToString())
+                           .Distinct();
+
+            if ( objCount == 0 )
+            {
+                if (typeList.Count() <= 0)
+                {
+                    
+                }
+
+            }
+
+
+           
+
+            var count = from x in _jArray
                         group x by x.Type into g
                         select g;
 
-            Console.WriteLine(count.Count());
+
         }
+
 
     }
 }

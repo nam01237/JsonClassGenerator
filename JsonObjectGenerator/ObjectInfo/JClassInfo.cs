@@ -12,6 +12,6 @@ namespace JsonObjectGenerator.ObjectInfo
     public class JClassInfo
     {
         public string Name { get; set; }
-        public List<JType> JTypes { get; set; }
+        public List<JInfo> Properties { get; set; }
     }
 }

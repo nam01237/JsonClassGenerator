@@ -47,14 +47,14 @@
   <ItemGroup>
     <Compile Include="Generate\JClassCreater.cs" />
     <Compile Include="Generate\JArrayCreater.cs" />
-    <Compile Include="Generate\JGenerator.cs" />
+    <Compile Include="Generate\JTypeSetter.cs" />
     <Compile Include="Generate\TempStringReader.cs" />
     <Compile Include="ObjectInfo\JArrayInfo.cs" />
     <Compile Include="ObjectInfo\JClassInfo.cs" />
     <Compile Include="ObjectInfo\Properties\JListType.cs" />
     <Compile Include="ObjectInfo\Properties\JClassType.cs" />
-    <Compile Include="ObjectInfo\Properties\JType.cs" />
-    <Compile Include="ObjectInfo\Properties\JValueType.cs" />
+    <Compile Include="ObjectInfo\JInfo.cs" />
+    <Compile Include="ObjectInfo\JValueInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
