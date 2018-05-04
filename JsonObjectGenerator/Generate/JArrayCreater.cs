@@ -2,7 +2,9 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +24,8 @@ namespace JsonObjectGenerator.Generate
             _jArrayInfo = new JArrayInfo();
             _jArray = jArray;
 
+            _jArrayInfo.Name = jArray.Path;
+
             SetType();
 
             return _jArrayInfo;
@@ -30,26 +34,19 @@ namespace JsonObjectGenerator.Generate
 
         private void SetType()
         {
-            int objCount = _jArray.Count(x => x.Type.ToString().Equals("Object"));
+            var types= (from x in _jArray.Values()
+                             group x by x.Type into g
+                             select new { type = g.Key.ToString() } );
 
-            var typeList = _jArray.Select(x => x.Type.ToString())
-                           .Distinct();
-
-            if ( objCount == 0 )
+            if ( types.Count() > 1 )
             {
-                if (typeList.Count() <= 0)
-                {
-                    
-                }
-
+                _jArrayInfo.Type = "object";
+            }
+            else
+            {
+                _jArrayInfo.Type = Converter.TypeStringConverter(types.FirstOrDefault().type);
             }
 
-
-           
-
-            var count = from x in _jArray
-                        group x by x.Type into g
-                        select g;
 
 
         }

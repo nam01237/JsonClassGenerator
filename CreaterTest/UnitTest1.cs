@@ -18,7 +18,7 @@ namespace CreaterTest
 
             JClassCreater jCreator = new JClassCreater();
 
-            JClassInfo jClassInfo = jCreator.Create(jObject);
+            JClassInfo jClassInfo = jCreator.Create(new InClassName(jObject));
 
         }
     }

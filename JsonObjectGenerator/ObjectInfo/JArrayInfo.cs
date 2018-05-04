@@ -9,7 +9,6 @@ namespace JsonObjectGenerator.ObjectInfo
 {
     public class JArrayInfo : JInfo
     {
-        public JInfo Element { get; set; }
         public List<JClassInfo> ClassTypes { get; set; }
     }
 }

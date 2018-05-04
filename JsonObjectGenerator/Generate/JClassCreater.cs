@@ -19,14 +19,14 @@ namespace JsonObjectGenerator.Generate
         {
         }
 
-        public JClassInfo Create(JObject jObject, string name = "{CN}")
+        public JClassInfo Create(JObject jObject)
         {
             _jClassInfo = new JClassInfo();
             _jObject = jObject;
             _jProperties = _jObject.Properties().ToList();
 
-
-            _jClassInfo.Name = name;
+            _jClassInfo.Name = jObject.Path;
+            _jClassInfo.Type = "Class";
             SetProperties();
 
             return _jClassInfo;
@@ -35,50 +35,35 @@ namespace JsonObjectGenerator.Generate
         private void SetProperties()
         {
             _jClassInfo.Properties = new List<JInfo>();
+            JClassCreater classCreater = new JClassCreater();
+            JArrayCreater arrayCreater = new JArrayCreater();
 
             List<JToken> jTokens = _jObject.Values().ToList();
 
             foreach (var item in jTokens)
             {
+                if (item.Type.ToString().Equals("Object"))
+                {
+                    JObject temp = (JObject) item;
+                    _jClassInfo.Properties.Add( classCreater.Create(temp) );
+                }
+                else if (item.Type.ToString().Equals("Array"))
+                {
+                    JArray temp = (JArray) item;
+                    _jClassInfo.Properties.Add( arrayCreater.Create(temp) );
+                }
+                else
+                {
+                    _jClassInfo.Properties.Add( new JValueInfo
+                    {
+                        Name = item.Path,
+                        Type = Converter.TypeStringConverter( item.Type.ToString() )
+                    } );
+                }
             }
-
-
-            //foreach (JProperty jp in _jProperties)
-            //{
-            //    switch (jp.Value.Type.ToString())
-            //    {
-            //        case "String":
-            //            _jClassInfo.JTypes.Add(
-            //                new JValueType { Type = "string", Name = jp.Value.ToString() });
-            //            break;
-            //        case "Integer":
-            //            _jClassInfo.JTypes.Add(
-            //                new JValueType { Type = "int", Name = jp.Value.ToString() });
-            //            break;
-            //        case "Boolean":
-            //            _jClassInfo.JTypes.Add(
-            //                new JValueType { Type = "bool", Name = jp.Value.ToString() });
-            //            break;
-            //        case "Float":
-            //            _jClassInfo.JTypes.Add(
-            //                new JValueType { Type = "double", Name = jp.Value.ToString() });
-            //            break;
-            //        case "Array":
-            //            _jClassInfo.JTypes.Add(
-            //                new JListType { Type = "list", Name = jp.Value.ToString() });
-            //            break;
-            //        case "Object":
-            //            _jClassInfo.JTypes.Add(
-            //                new JClassType { Type = "class", Name = jp.Value.ToString() });
-            //            break;
-            //        case "Null":
-            //            _jClassInfo.JTypes.Add(
-            //                new JValueType { Type = "unknwon", Name = jp.Value.ToString() });
-            //            break;
-            //    }
-
-            //}
         }
+
+
 
     }
 }

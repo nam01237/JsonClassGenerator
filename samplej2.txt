@@ -3,9 +3,9 @@
          "name" : "kim",
          "age"  : 19,
          "isAgree" : true,
+	 "type" : { "call" : 010 },
 	 "double" : 3.14,
 	 "bool" : true,
 	 "list" : [ 20, 30, 40 ],
-	 "null" : null,
-	 "type" : {}
+	 "null" : null
     }
