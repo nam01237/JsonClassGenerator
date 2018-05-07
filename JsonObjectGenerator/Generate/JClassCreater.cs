@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JsonObjectGenerator.ObjectInfo.Properties;
 
 namespace JsonObjectGenerator.Generate
 {
@@ -25,7 +24,7 @@ namespace JsonObjectGenerator.Generate
             _jObject = jObject;
             _jProperties = _jObject.Properties().ToList();
 
-            _jClassInfo.Name = jObject.Path;
+            _jClassInfo.Name = Converter.PathToName(jObject.Path);
             _jClassInfo.Type = "Class";
             SetProperties();
 
@@ -56,7 +55,7 @@ namespace JsonObjectGenerator.Generate
                 {
                     _jClassInfo.Properties.Add( new JValueInfo
                     {
-                        Name = item.Path,
+                        Name = Converter.PathToName(item.Path),
                         Type = Converter.TypeStringConverter( item.Type.ToString() )
                     } );
                 }

@@ -55,8 +55,6 @@
     <Compile Include="Generate\TempStringReader.cs" />
     <Compile Include="ObjectInfo\JArrayInfo.cs" />
     <Compile Include="ObjectInfo\JClassInfo.cs" />
-    <Compile Include="ObjectInfo\Properties\JListType.cs" />
-    <Compile Include="ObjectInfo\Properties\JClassType.cs" />
     <Compile Include="ObjectInfo\JInfo.cs" />
     <Compile Include="ObjectInfo\JValueInfo.cs" />
     <Compile Include="Program.cs" />

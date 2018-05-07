@@ -60,6 +60,13 @@ namespace JsonObjectGenerator
                 Console.WriteLine(item);
             }
 
+            Console.WriteLine();
+
+            foreach (var property in ((JClassInfo)jClassInfo.Properties[2]).Properties)
+            {
+                Console.WriteLine(property);
+            }
+
             //JArray jArray = JArray.Parse(str);
             //JArrayCreater jArrayCreater = new JArrayCreater();
             //jArrayCreater.Create(jArray);

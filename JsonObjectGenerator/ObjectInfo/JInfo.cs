@@ -13,8 +13,9 @@ namespace JsonObjectGenerator.ObjectInfo
 
         public override string ToString()
         {
-            return $"{Type} {Name}"; 
+            return $"{Type} {Name}";
         }
 
+        public abstract bool Equals(JInfo other);
     }
 }

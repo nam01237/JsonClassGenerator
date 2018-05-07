@@ -2,10 +2,10 @@
     {
          "name" : "kim",
          "age"  : 19,
-         "isAgree" : true,
-	 "type" : { "call" : 010 },
+	 "type" : { "num" : 14 },
 	 "double" : 3.14,
 	 "bool" : true,
-	 "list" : [ 20, 30, 40 ],
+	 "list" : [ { "num1" : 123 }, 11, 12 ],
 	 "null" : null
     }
+

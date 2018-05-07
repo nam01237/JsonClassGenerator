@@ -1,5 +1,4 @@
 ﻿using JsonObjectGenerator.ObjectInfo;
-using JsonObjectGenerator.ObjectInfo.Properties;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -12,5 +11,17 @@ namespace JsonObjectGenerator.ObjectInfo
     public class JClassInfo : JInfo
     {
         public List<JInfo> Properties { get; set; }
+
+
+        public override bool Equals(JInfo other)
+        {
+            foreach (var p in Properties)
+            {
+                if (!((JClassInfo) other).Properties.Contains(p))
+                    return false;
+            }
+
+            return true;
+        }
     }
 }

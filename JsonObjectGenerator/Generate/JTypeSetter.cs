@@ -1,5 +1,4 @@
 ﻿using JsonObjectGenerator.ObjectInfo;
-using JsonObjectGenerator.ObjectInfo.Properties;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -26,11 +25,11 @@ namespace JsonObjectGenerator.Generate
                 case "Float":
                     return new JValueInfo { Name = jToken.Path, Type = "double" };
                 case "Array":
-                    return new JListType { Name = jToken.Path, Type = "list" };
+                    return new JArrayInfo(){ Name = jToken.Path, Type = "list" };
                 case "Object":
-                    return new JClassType { Name = jToken.Path, Type = "class" };
+                    return new JClassInfo() { Name = jToken.Path, Type = "class" };
                 case "Null":
-                    return new JClassType { Name = jToken.Path, Type = "null" };
+                    return new JValueInfo() { Name = jToken.Path, Type = "null" };
             }
 
             return null;

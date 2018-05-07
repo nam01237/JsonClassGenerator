@@ -24,9 +24,11 @@ namespace JsonObjectGenerator.Generate
             _jArrayInfo = new JArrayInfo();
             _jArray = jArray;
 
-            _jArrayInfo.Name = jArray.Path;
+            _jArrayInfo.Name = Converter.PathToName(jArray.Path);
+            _jArrayInfo.Type = "List";
 
             SetType();
+            SetClasses();
 
             return _jArrayInfo;
 
@@ -40,17 +42,41 @@ namespace JsonObjectGenerator.Generate
 
             if ( types.Count() > 1 )
             {
-                _jArrayInfo.Type = "object";
+                _jArrayInfo.GenericType = "object";
             }
             else
             {
-                _jArrayInfo.Type = Converter.TypeStringConverter(types.FirstOrDefault().type);
+                _jArrayInfo.GenericType = Converter.TypeStringConverter(types.FirstOrDefault().type);
             }
-
-
 
         }
 
+        private void SetClasses()
+        {
+           List<JToken> classes = (from x in _jArray.Values()
+                where x.Type.ToString() == "Object"
+                select x).ToList();
+
+            if( classes.Count == 0)
+                return;
+
+            JClassCreater classCreater = new JClassCreater();
+
+            foreach (var x in classes)
+            {
+                JClassInfo classInfo = classCreater.Create((JObject)x);
+
+                if (_jArrayInfo.ClassTypes.Contains(classInfo))
+                {
+                    _jArrayInfo.ClassTypes.Add(classInfo);
+                }
+            }
+
+            if (_jArrayInfo.ClassTypes.Count == 1 && _jArrayInfo.GenericType == "Class")
+            {
+                _jArrayInfo.GenericType = _jArrayInfo.ClassTypes[0].Name;
+            }
+        }
 
     }
 }
