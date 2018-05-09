@@ -27,6 +27,9 @@ namespace JsonObjectGenerator.Generate
                 case "Float":
                     convertString = "float";
                     break;
+                case "Property":
+                    convertString = "class";
+                    break;
                 case "Null":
                     convertString = "null";
                     break;

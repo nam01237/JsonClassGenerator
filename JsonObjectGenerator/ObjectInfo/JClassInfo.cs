@@ -13,8 +13,13 @@ namespace JsonObjectGenerator.ObjectInfo
         public List<JInfo> Properties { get; set; }
 
 
-        public override bool Equals(JInfo other)
+        public override bool Equals(object other)
         {
+            if (other == null)
+                return false;
+
+            if (this.GetType() != other.GetType())
+
             foreach (var p in Properties)
             {
                 if (!((JClassInfo) other).Properties.Contains(p))
@@ -22,6 +27,20 @@ namespace JsonObjectGenerator.ObjectInfo
             }
 
             return true;
+        }
+
+        public override int GetHashCode()
+        {
+            StringBuilder str = new StringBuilder();
+            str.Append(Name);
+            str.Append(Type);
+
+            foreach (JInfo jInfo in Properties)
+            {
+                str.Append(jInfo.ToString());
+            }
+
+            return str.ToString().GetHashCode();
         }
     }
 }

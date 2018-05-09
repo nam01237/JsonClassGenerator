@@ -28,7 +28,7 @@ namespace JsonObjectGenerator.Generate
             _jArrayInfo.Type = "List";
 
             SetType();
-            SetClasses();
+            SetClassInfos();
 
             return _jArrayInfo;
 
@@ -39,6 +39,10 @@ namespace JsonObjectGenerator.Generate
             var types= (from x in _jArray.Values()
                              group x by x.Type into g
                              select new { type = g.Key.ToString() } );
+
+            Console.WriteLine(types.FirstOrDefault().type);
+
+
 
             if ( types.Count() > 1 )
             {
@@ -51,31 +55,32 @@ namespace JsonObjectGenerator.Generate
 
         }
 
-        private void SetClasses()
+        private void SetClassInfos()
         {
-           List<JToken> classes = (from x in _jArray.Values()
-                where x.Type.ToString() == "Object"
-                select x).ToList();
+            var classes = (from x in _jArray.Children()
+                          where x.Type.ToString() == "Object"
+                          select x).ToList();
 
-            if( classes.Count == 0)
+            if (classes.Count == 0)
                 return;
 
+            _jArrayInfo.ClassTypes = new List<JClassInfo>();
             JClassCreater classCreater = new JClassCreater();
 
             foreach (var x in classes)
             {
-                JClassInfo classInfo = classCreater.Create((JObject)x);
+                JClassInfo tempInfo = classCreater.Create((JObject)x);
 
-                if (_jArrayInfo.ClassTypes.Contains(classInfo))
-                {
-                    _jArrayInfo.ClassTypes.Add(classInfo);
-                }
+                if (!_jArrayInfo.ClassTypes.Contains(tempInfo))
+                    _jArrayInfo.ClassTypes.Add(tempInfo);
+
             }
 
-            if (_jArrayInfo.ClassTypes.Count == 1 && _jArrayInfo.GenericType == "Class")
-            {
+            if (_jArrayInfo.GenericType == "class" && _jArrayInfo.ClassTypes.Count == 1)
                 _jArrayInfo.GenericType = _jArrayInfo.ClassTypes[0].Name;
-            }
+            else
+                _jArrayInfo.GenericType = "object";
+
         }
 
     }

@@ -16,6 +16,9 @@ namespace JsonObjectGenerator.ObjectInfo
             return $"{Type} {Name}";
         }
 
-        public abstract bool Equals(JInfo other);
+        public abstract override bool Equals(object obj);
+
+        public abstract override int GetHashCode();
+
     }
 }

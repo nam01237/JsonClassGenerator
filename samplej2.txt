@@ -5,7 +5,7 @@
 	 "type" : { "num" : 14 },
 	 "double" : 3.14,
 	 "bool" : true,
-	 "list" : [ { "num1" : 123 }, 11, 12 ],
+	 "list" : [ {"one" : 10, "name" : "nan"}, {"one" : 10, "name" : "nan"} ],
 	 "null" : null
     }
 

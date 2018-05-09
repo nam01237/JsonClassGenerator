@@ -13,12 +13,23 @@ namespace JsonObjectGenerator.ObjectInfo
         public string GenericType;
         public List<JClassInfo> ClassTypes { get; set; }
 
-        public override bool Equals(JInfo other)
+        public override bool Equals(object other)
         {
-            if (Name == other.Name && Type == other.Type)
+            if (other == null)
+                return false;
+
+            if (this.GetType() != other.GetType())
+                return false;
+
+            if (Name == ((JArrayInfo)other).Name && GenericType == ((JArrayInfo)other).GenericType)
                 return true;
             else
                 return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return (Name + Type + GenericType).GetHashCode();
         }
 
         public override string ToString()

@@ -8,12 +8,24 @@ namespace JsonObjectGenerator.ObjectInfo
 {
     public class JValueInfo : JInfo
     {
-        public override bool Equals(JInfo other)
+        public override bool Equals(object other)
         {
-            if (Name == other.Name && Type == other.Type)
+            if (other == null)
+                return false;
+
+            if (this.GetType() != other.GetType())
+                return false;
+
+
+            if (Name == ((JValueInfo)other).Name && Type == ((JValueInfo)other).Type)
                 return true;
             else
                 return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return (Name + Type).GetHashCode() ;
         }
     }
 }
