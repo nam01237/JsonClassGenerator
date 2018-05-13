@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JsonObjectGenerator.Generate
+namespace NJsonObject.Generate
 {
     public class Converter
     {
@@ -25,7 +25,7 @@ namespace JsonObjectGenerator.Generate
                     convertString = "bool";
                     break;
                 case "Float":
-                    convertString = "float";
+                    convertString = "double";
                     break;
                 case "Property":
                     convertString = "class";
@@ -42,7 +42,13 @@ namespace JsonObjectGenerator.Generate
         {
             int index = path.LastIndexOf(".");
 
-            return path.Substring( index + 1, path.Length - index - 1);
+            if (index == -1)
+                return path;
+
+            string name = path.Substring(index + 1, path.Length - index - 1);
+
+
+            return name;
         }
     }
 }

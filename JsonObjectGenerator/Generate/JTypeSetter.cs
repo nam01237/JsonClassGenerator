@@ -1,12 +1,12 @@
-﻿using JsonObjectGenerator.ObjectInfo;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NJsonObject.ObjectInfo;
 
-namespace JsonObjectGenerator.Generate
+namespace NJsonObject.Generate
 {
     public class JTypeSetter
     {

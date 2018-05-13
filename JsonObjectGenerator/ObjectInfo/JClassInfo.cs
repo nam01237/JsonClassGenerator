@@ -1,17 +1,12 @@
-﻿using JsonObjectGenerator.ObjectInfo;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace JsonObjectGenerator.ObjectInfo
+namespace NJsonObject.ObjectInfo
 {
     public class JClassInfo : JInfo
     {
         public List<JInfo> Properties { get; set; }
-
+        public JInfo Parent { get; set; }
 
         public override bool Equals(object other)
         {

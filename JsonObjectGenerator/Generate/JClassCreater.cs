@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json.Linq;
-using JsonObjectGenerator.ObjectInfo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NJsonObject.Generate;
+using NJsonObject.ObjectInfo;
 
-namespace JsonObjectGenerator.Generate
+namespace NJsonObject.Generate
 {
     public class JClassCreater
     {
@@ -24,7 +25,15 @@ namespace JsonObjectGenerator.Generate
             _jObject = jObject;
             _jProperties = _jObject.Properties().ToList();
 
-            _jClassInfo.Name = Converter.PathToName(jObject.Path);
+            if (jObject.Path != "")
+            {
+                _jClassInfo.Name = Converter.PathToName(jObject.Path);
+            }
+            else
+            {
+                _jClassInfo.Name = "Root";
+            }
+
             _jClassInfo.Type = "Class";
             SetProperties();
 
@@ -43,21 +52,23 @@ namespace JsonObjectGenerator.Generate
             {
                 if (item.Type.ToString().Equals("Object"))
                 {
-                    JObject temp = (JObject) item;
-                    _jClassInfo.Properties.Add( classCreater.Create(temp) );
+                    JClassInfo temp = classCreater.Create((JObject)item);
+                    temp.Parent = _jClassInfo;
+
+                    _jClassInfo.Properties.Add(temp);
                 }
                 else if (item.Type.ToString().Equals("Array"))
                 {
-                    JArray temp = (JArray) item;
-                    _jClassInfo.Properties.Add( arrayCreater.Create(temp) );
+                    JArray temp = (JArray)item;
+                    _jClassInfo.Properties.Add(arrayCreater.Create(temp));
                 }
                 else
                 {
-                    _jClassInfo.Properties.Add( new JValueInfo
+                    _jClassInfo.Properties.Add(new JValueInfo
                     {
                         Name = Converter.PathToName(item.Path),
-                        Type = Converter.TypeStringConverter( item.Type.ToString() )
-                    } );
+                        Type = Converter.TypeStringConverter(item.Type.ToString())
+                    });
                 }
             }
         }

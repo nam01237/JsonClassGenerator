@@ -1,5 +1,4 @@
-﻿using JsonObjectGenerator.ObjectInfo;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -7,8 +6,9 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using NJsonObject.ObjectInfo;
 
-namespace JsonObjectGenerator.Generate
+namespace NJsonObject.Generate
 {
     public class JArrayCreater
     {
@@ -70,6 +70,9 @@ namespace JsonObjectGenerator.Generate
             foreach (var x in classes)
             {
                 JClassInfo tempInfo = classCreater.Create((JObject)x);
+                tempInfo.Parent = _jArrayInfo;
+
+                tempInfo.Name = _jArrayInfo.Name + (_jArrayInfo.ClassTypes.Count + 1);
 
                 if (!_jArrayInfo.ClassTypes.Contains(tempInfo))
                     _jArrayInfo.ClassTypes.Add(tempInfo);
