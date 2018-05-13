@@ -8,11 +8,7 @@ namespace Test
 {
     class Class1
     {
-        #region feilds
 
-        {F}
-
-        #endregion
 
     }
 }

@@ -1,0 +1,23 @@
+    class {CN}
+    {
+	public {CN}()
+	{}
+
+	public {CN}(JClassInfo jClassInfo)
+	{
+	
+	}
+
+        #region feilds
+
+        {FD}
+
+        #endregion
+
+        #region Properties
+
+	{PROP}
+
+        #endregion
+
+    }

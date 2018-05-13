@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JSonCodeGenerator.Controls;
+using JSonCodeGenerator.Generate;
 using Newtonsoft.Json.Linq;
 using NJsonObject.Generate;
 using NJsonObject.ObjectInfo;
@@ -23,6 +24,11 @@ namespace JSonCodeGenerator
         {
             InitializeComponent();
             InitializeInstance();
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            TemplateController.LoadDefaultTemplate();
         }
 
         private void InitializeInstance()
@@ -77,6 +83,8 @@ namespace JSonCodeGenerator
                 }    
             }
         }
+
+
     }
 
     
