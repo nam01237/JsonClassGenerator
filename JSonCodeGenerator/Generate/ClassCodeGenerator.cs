@@ -73,6 +73,11 @@ namespace JSonCodeGenerator.Generate
                 {
                     tempString = TemplateController.InitRefFormat;
                 }
+                else if (item is JArrayInfo)
+                {
+
+                    return null;
+                }
                 else
                 {
                     tempString = TemplateController.InitValueFormat;
@@ -88,6 +93,15 @@ namespace JSonCodeGenerator.Generate
 
             return constructorString.ToString();
         }
-         
+
+        private static string CreateListInitString(JArrayInfo jArrayInfo)
+        {
+            if (jArrayInfo.GenericType != "object")
+            {
+
+            }
+        }
+
     }
+
 }
