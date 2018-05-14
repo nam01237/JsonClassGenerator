@@ -51,13 +51,14 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Root.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JsonObjectGenerator\NJSonObject.csproj">
+    <ProjectReference Include="..\NJsonObject\NJSonObject.csproj">
       <Project>{38ede4c9-6980-4229-aec0-8d39a300d24b}</Project>
       <Name>NJSonObject</Name>
     </ProjectReference>

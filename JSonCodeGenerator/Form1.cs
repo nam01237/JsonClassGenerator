@@ -18,7 +18,8 @@ namespace JSonCodeGenerator
     public partial class Form1 : Form
     {
         private JClassCreater _jClassCreater;
-        private ClassInfoTreeNode classInfoTreeNode;
+        private string _fieldFormat;
+        private string _propertyFormat;
 
         public Form1()
         {
@@ -49,15 +50,23 @@ namespace JSonCodeGenerator
                 return;
             }
 
-            JClassInfo temp = _jClassCreater.Create(jObject);
-            classInfoTreeNode = new ClassInfoTreeNode( temp );
-            SetNode(classInfoTreeNode);
+            _fieldFormat = e.FieldFormat;
+            _propertyFormat = e.PropertyFormat;
 
+            JClassInfo temp = _jClassCreater.Create(jObject);
+            ClassInfoTreeNode classInfoTreeNode = new ClassInfoTreeNode( temp );
+            classInfoTreeNode.ClassCode =
+                ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)classInfoTreeNode.JInfo);
+
+            SetNode(classInfoTreeNode);
+            usc_CodeViewer.ClearTreeView();
             usc_CodeViewer.AddNode(classInfoTreeNode);
+            usc_CodeViewer.SetCodeText(classInfoTreeNode.ClassCode);
         }
 
         private void SetNode(ClassInfoTreeNode node)
         {
+            #region
             if (node.JInfo is JClassInfo)
             {
                 foreach (JInfo item in ((JClassInfo)node.JInfo).Properties)
@@ -65,6 +74,7 @@ namespace JSonCodeGenerator
                     if (item is JClassInfo || item is JArrayInfo)
                     {
                         ClassInfoTreeNode childNode = new ClassInfoTreeNode(item);
+
                         node.Nodes.Add(childNode);
 
                         SetNode(childNode);
@@ -74,14 +84,15 @@ namespace JSonCodeGenerator
             }
             else if (node.JInfo is JArrayInfo)
             {
-                foreach (JClassInfo item  in ((JArrayInfo)node.JInfo).ClassTypes)
+                foreach (JClassInfo item in ((JArrayInfo)node.JInfo).ClassTypes)
                 {
                     ClassInfoTreeNode childNode = new ClassInfoTreeNode(item);
                     node.Nodes.Add(childNode);
 
                     SetNode(childNode);
-                }    
+                }
             }
+            #endregion
         }
 
 

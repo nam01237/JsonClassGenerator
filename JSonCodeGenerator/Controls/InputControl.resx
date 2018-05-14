@@ -123,6 +123,7 @@
     "total": 28702,
     "start": 1,
     "display": 10,
+    "type" : { "age" : 19, "name" : "nam" },
     "items": [
         {
             "title": "롯데백화점",

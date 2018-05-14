@@ -37,5 +37,10 @@ namespace NJsonObject.ObjectInfo
 
             return str.ToString().GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return $"{Type} {Name}";
+        }
     }
 }

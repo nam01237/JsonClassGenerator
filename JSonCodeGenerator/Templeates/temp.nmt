@@ -1,0 +1,10 @@
+{NAME} = ({TYPE})jObject["{NAME}"];
+
+{NAME} = new {TYPE}((JObject)jObject["{NAME}"]);
+
+{NAME} = new {TYPE}();
+foreach(var item in JArray.Parse(jObject["{NAME}"]))
+{
+	JObject jo = jObject.Parse(item);
+	{NAME}.Add(new {TYPE}(jo));
+} 

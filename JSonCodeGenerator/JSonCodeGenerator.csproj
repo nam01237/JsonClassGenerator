@@ -103,18 +103,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Templeates\DefaultClassTemplate.nmt" />
+    <None Include="Templeates\InitRefFormat.nmt" />
+    <None Include="Templeates\InitValueFormat.nmt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JsonObjectGenerator\NJSonObject.csproj">
+    <ProjectReference Include="..\NJsonObject\NJSonObject.csproj">
       <Project>{38ede4c9-6980-4229-aec0-8d39a300d24b}</Project>
       <Name>NJSonObject</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Templeates\DefaultClassTemplate.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

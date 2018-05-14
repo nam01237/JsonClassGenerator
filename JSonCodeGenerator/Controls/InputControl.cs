@@ -19,7 +19,7 @@ namespace JSonCodeGenerator.Controls
 
         private void btn_Generate_Click(object sender, EventArgs e)
         {
-            GenerateButtonClickedEventArgs args = new GenerateButtonClickedEventArgs(txt_JsonString.Text);
+            GenerateButtonClickedEventArgs args = new GenerateButtonClickedEventArgs(txt_JsonString.Text, txt_FeildFormat.Text, txt_PropertyFormat.Text);
 
             OnGenerateButtonClicked(args);
         }
@@ -36,13 +36,17 @@ namespace JSonCodeGenerator.Controls
     public class GenerateButtonClickedEventArgs : EventArgs
     {
         public string JsonString { get; set; }
+        public string FieldFormat { get; set; }
+        public string PropertyFormat { get; set; }
 
         public GenerateButtonClickedEventArgs()
         { }
 
-        public GenerateButtonClickedEventArgs(string jsonString)
+        public GenerateButtonClickedEventArgs(string jsonString, string fieldFormat, string propertyFormat)
         {
             JsonString = jsonString;
+            FieldFormat = fieldFormat;
+            PropertyFormat = propertyFormat;
         }
     }
 }

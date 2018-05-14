@@ -21,5 +21,15 @@ namespace JSonCodeGenerator.Controls
         {
             trv_ClassInfo.Nodes.Add(node);
         }
+
+        public void SetCodeText(string text)
+        {
+            txt_Code.Text = text;
+        }
+
+        public void ClearTreeView()
+        {
+            trv_ClassInfo.Nodes.Clear();
+        }
     }
 }

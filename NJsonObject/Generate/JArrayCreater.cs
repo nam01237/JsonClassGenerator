@@ -72,7 +72,8 @@ namespace NJsonObject.Generate
                 JClassInfo tempInfo = classCreater.Create((JObject)x);
                 tempInfo.Parent = _jArrayInfo;
 
-                tempInfo.Name = _jArrayInfo.Name + (_jArrayInfo.ClassTypes.Count + 1);
+                tempInfo.Type = _jArrayInfo.Name + (_jArrayInfo.ClassTypes.Count + 1);
+                tempInfo.Name = "";
 
                 if (!_jArrayInfo.ClassTypes.Contains(tempInfo))
                     _jArrayInfo.ClassTypes.Add(tempInfo);
@@ -80,9 +81,11 @@ namespace NJsonObject.Generate
             }
 
             if (_jArrayInfo.GenericType == "class" && _jArrayInfo.ClassTypes.Count == 1)
-                _jArrayInfo.GenericType = _jArrayInfo.ClassTypes[0].Name;
+                _jArrayInfo.GenericType = _jArrayInfo.ClassTypes[0].Type;
             else
                 _jArrayInfo.GenericType = "object";
+
+            _jArrayInfo.Type = $"List<{_jArrayInfo.GenericType}>";
 
         }
 

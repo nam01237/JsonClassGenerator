@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JSonCodeGenerator.Generate;
 using NJsonObject.ObjectInfo;
 
 namespace JSonCodeGenerator.Controls
@@ -19,6 +20,7 @@ namespace JSonCodeGenerator.Controls
         {
             JInfo = jJInfo;
             Text = jJInfo.ToString();
+
         }
 
         public JInfo JInfo { get; set; } 

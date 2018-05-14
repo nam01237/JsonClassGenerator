@@ -34,7 +34,7 @@ namespace NJsonObject.Generate
                 _jClassInfo.Name = "Root";
             }
 
-            _jClassInfo.Type = "Class";
+            _jClassInfo.Type = "class";
             SetProperties();
 
             return _jClassInfo;
@@ -54,6 +54,7 @@ namespace NJsonObject.Generate
                 {
                     JClassInfo temp = classCreater.Create((JObject)item);
                     temp.Parent = _jClassInfo;
+                    temp.Type = _jClassInfo.Name + (_jClassInfo.Properties.Count(x => x.Type == "class") + 1);
 
                     _jClassInfo.Properties.Add(temp);
                 }

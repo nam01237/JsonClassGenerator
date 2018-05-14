@@ -1,23 +1,25 @@
-    class {CN}
-    {
+class {CN}
+{
+    #region Constructors
+
 	public {CN}()
 	{}
 
-	public {CN}(JClassInfo jClassInfo)
+	public {CN}(JObject jObject)
 	{
-	
+		{CONS}
+
 	}
 
-        #region feilds
+    #endregion	
 
-        {FD}
+    #region Fields
+	{FD}
+	
+    #endregion
 
-        #endregion
-
-        #region Properties
-
+    #region Properties 
 	{PROP}
-
-        #endregion
-
-    }
+    
+    #endregion
+}

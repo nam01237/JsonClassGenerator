@@ -99,7 +99,7 @@
             this.txt_FeildFormat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_FeildFormat.Size = new System.Drawing.Size(237, 68);
             this.txt_FeildFormat.TabIndex = 1;
-            this.txt_FeildFormat.Text = "private {TYPE} {NAME}";
+            this.txt_FeildFormat.Text = "private {TYPE} {NAME};";
             // 
             // txt_JsonString
             // 
