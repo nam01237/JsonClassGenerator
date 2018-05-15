@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace JSonCodeGenerator.Generate
 {
-    public class TemplateController
+    public class Template
     {
-        private TemplateController()
+        private Template()
         { }
 
         private static readonly string TEMPLATE_PATH = "..//..//Templeates";
@@ -17,12 +17,14 @@ namespace JSonCodeGenerator.Generate
         public static string ClassTemplate { get; private set; }
         public static string InitValueFormat { get; private set; }
         public static string InitRefFormat { get; private set; }
+        public static string InitListFormat { get; private set; }
 
         public static void LoadDefaultTemplate()
         {
             ClassTemplate = File.ReadAllText(TEMPLATE_PATH + "\\DefaultClassTemplate.nmt");
             InitValueFormat = File.ReadAllText(TEMPLATE_PATH + "\\InitValueFormat.nmt");
             InitRefFormat = File.ReadAllText(TEMPLATE_PATH + "\\InitRefFormat.nmt");
+            InitListFormat = File.ReadAllText(TEMPLATE_PATH + "\\InitListFormat.nmt");
         }
 
         

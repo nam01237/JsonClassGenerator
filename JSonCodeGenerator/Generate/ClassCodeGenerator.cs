@@ -29,7 +29,7 @@ namespace JSonCodeGenerator.Generate
 
             string properties = CreateMemberString(upperInfos, propertyFormat);
 
-            string classTemplate = TemplateController.ClassTemplate;
+            string classTemplate = Template.ClassTemplate;
 
             classTemplate = classTemplate.Replace("{CN}", jClassInfo.Name);
             classTemplate = classTemplate.Replace("{FD}", fields);
@@ -44,6 +44,11 @@ namespace JSonCodeGenerator.Generate
         private static string CreateMemberString(List<JInfo> members, string formatString)
         {
             StringBuilder fieldString = new StringBuilder();
+
+            if (members.Exists(x => x.Type == "List") )
+            {
+                fieldString.AppendLine("JArray array;");
+            }
 
             foreach (var item in members)
             {
@@ -71,20 +76,20 @@ namespace JSonCodeGenerator.Generate
 
                 if (item is JClassInfo)
                 {
-                    tempString = TemplateController.InitRefFormat;
+                    tempString = Template.InitRefFormat;
+                    tempString = tempString.Replace("{TYPE}", item.Type);
+                    tempString = tempString.Replace("{NAME}", item.Name);
                 }
                 else if (item is JArrayInfo)
                 {
-
-                    return null;
+                    tempString = CreateListInitString((JArrayInfo)item);
                 }
                 else
                 {
-                    tempString = TemplateController.InitValueFormat;
+                    tempString = Template.InitValueFormat;
+                    tempString = tempString.Replace("{TYPE}", item.Type);
+                    tempString = tempString.Replace("{NAME}", item.Name);
                 }
-
-                tempString = tempString.Replace("{TYPE}", item.Type);
-                tempString = tempString.Replace("{NAME}", item.Name);
 
                 constructorString.AppendLine();
                 constructorString.Append("\t\t");
@@ -96,10 +101,20 @@ namespace JSonCodeGenerator.Generate
 
         private static string CreateListInitString(JArrayInfo jArrayInfo)
         {
+            string tempString = "asdf";
+
             if (jArrayInfo.GenericType != "object")
             {
+                if (jArrayInfo.ClassTypes.Count == 1)
+                {
+                    tempString = Template.InitListFormat;
 
+                    tempString = tempString.Replace("{NAME}", jArrayInfo.Name);
+                    tempString = tempString.Replace("{CN}", jArrayInfo.ClassTypes[0].Name);
+                }
             }
+
+            return tempString;
         }
 
     }

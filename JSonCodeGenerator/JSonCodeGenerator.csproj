@@ -72,7 +72,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Generate\ClassCodeGenerator.cs" />
-    <Compile Include="Generate\TemplateController.cs" />
+    <Compile Include="Generate\Template.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\CodeViewer.resx">
@@ -104,6 +104,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Templeates\DefaultClassTemplate.nmt" />
+    <None Include="Templeates\InitListFormat.nmt" />
     <None Include="Templeates\InitRefFormat.nmt" />
     <None Include="Templeates\InitValueFormat.nmt" />
   </ItemGroup>

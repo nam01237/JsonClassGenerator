@@ -13,7 +13,12 @@ class Root
 		start = (int)jObject["start"];
 		display = (int)jObject["display"];
 		type = new Root1((JObject)jObject["type"]);
-		items = (List<items1>)jObject["items"];
+			items = new List<>();
+	array = jObject["items"].ToString();
+	foreach(var item in array)
+	{
+		items.Add(new ((JObject)item));
+	}
 
 	}
 
