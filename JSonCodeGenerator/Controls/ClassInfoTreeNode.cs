@@ -9,7 +9,7 @@ using NJsonObject.ObjectInfo;
 
 namespace JSonCodeGenerator.Controls
 {
-    class ClassInfoTreeNode : TreeNode
+    public class ClassInfoTreeNode : TreeNode
     {
         public ClassInfoTreeNode()
         {

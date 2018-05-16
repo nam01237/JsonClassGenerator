@@ -1,6 +1,0 @@
-	{NAME} = new List<>();
-	array = jObject["{NAME}"].ToString();
-	foreach(var item in array)
-	{
-		{NAME}.Add(new {CN}((JObject)item));
-	}

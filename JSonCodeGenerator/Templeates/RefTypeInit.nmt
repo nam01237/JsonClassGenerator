@@ -1,0 +1,1 @@
+_{NAME} = new {TYPE}((JObject)jObject["{NAME}"]);

@@ -1,0 +1,6 @@
+_{NAME} = new List<{GTYPE}>();
+		array = JArray.Parse(jObject["{NAME}"].ToString());
+		foreach(var item in array)
+		{
+			_{NAME}.Add(item.Value<{GTYPE}>());
+		}

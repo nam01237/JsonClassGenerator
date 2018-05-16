@@ -1,18 +1,5 @@
 class {CN}
 {
-    #region Constructors
-
-	public {CN}()
-	{}
-
-	public {CN}(JObject jObject)
-	{
-		{CONS}
-
-	}
-
-    #endregion	
-
     #region Fields
 	{FD}
 	
@@ -22,4 +9,16 @@ class {CN}
 	{PROP}
     
     #endregion
+
+	#region Constructors
+
+	public {CN}()
+	{}
+
+	public {CN}(JObject jObject)
+	{
+		{CONS}
+	}
+
+    #endregion	
 }

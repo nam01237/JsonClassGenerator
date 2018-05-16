@@ -29,7 +29,7 @@ namespace JSonCodeGenerator.Generate
 
             string properties = CreateMemberString(upperInfos, propertyFormat);
 
-            string classTemplate = Template.ClassTemplate;
+            string classTemplate = TemplateString.ClassTemplate;
 
             classTemplate = classTemplate.Replace("{CN}", jClassInfo.Name);
             classTemplate = classTemplate.Replace("{FD}", fields);
@@ -44,11 +44,6 @@ namespace JSonCodeGenerator.Generate
         private static string CreateMemberString(List<JInfo> members, string formatString)
         {
             StringBuilder fieldString = new StringBuilder();
-
-            if (members.Exists(x => x.Type == "List") )
-            {
-                fieldString.AppendLine("JArray array;");
-            }
 
             foreach (var item in members)
             {
@@ -70,13 +65,18 @@ namespace JSonCodeGenerator.Generate
         {
             StringBuilder constructorString = new StringBuilder();
 
+            if (members.Exists(x => x.Type.StartsWith("List")))
+            {
+                constructorString.Append("JArray array;");
+            }
+
             foreach (var item in members)
             {
                 string tempString;
 
                 if (item is JClassInfo)
                 {
-                    tempString = Template.InitRefFormat;
+                    tempString = TemplateString.RefTypeInit;
                     tempString = tempString.Replace("{TYPE}", item.Type);
                     tempString = tempString.Replace("{NAME}", item.Name);
                 }
@@ -86,7 +86,7 @@ namespace JSonCodeGenerator.Generate
                 }
                 else
                 {
-                    tempString = Template.InitValueFormat;
+                    tempString = TemplateString.ValueTypeInit;
                     tempString = tempString.Replace("{TYPE}", item.Type);
                     tempString = tempString.Replace("{NAME}", item.Name);
                 }
@@ -101,17 +101,29 @@ namespace JSonCodeGenerator.Generate
 
         private static string CreateListInitString(JArrayInfo jArrayInfo)
         {
-            string tempString = "asdf";
+            string tempString;
 
-            if (jArrayInfo.GenericType != "object")
+            if (jArrayInfo.GenericType != "object ")
             {
                 if (jArrayInfo.ClassTypes.Count == 1)
                 {
-                    tempString = Template.InitListFormat;
+                    tempString = TemplateString.RefTypeListInit;
 
                     tempString = tempString.Replace("{NAME}", jArrayInfo.Name);
-                    tempString = tempString.Replace("{CN}", jArrayInfo.ClassTypes[0].Name);
+                    tempString = tempString.Replace("{CN}", jArrayInfo.ClassTypes[0].Type);
+                    tempString = tempString.Replace("{GTYPE}", jArrayInfo.GenericType);
                 }
+                else
+                {
+                    tempString = TemplateString.ValueTypeListInit;
+
+                    tempString = tempString.Replace("{NAME}", jArrayInfo.Name);
+                    tempString = tempString.Replace("{GTYPE}", jArrayInfo.GenericType);
+                }
+            }
+            else
+            {
+                tempString = $"{jArrayInfo.Name} = new List<object>()";
             }
 
             return tempString;

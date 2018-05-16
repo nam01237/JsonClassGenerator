@@ -1,48 +1,51 @@
-class Root
+class 
 {
-    #region Constructors
-
-	public Root()
-	{}
-
-	public Root(JObject jObject)
-	{
-		
-		lastBuildDate = (string)jObject["lastBuildDate"];
-		total = (int)jObject["total"];
-		start = (int)jObject["start"];
-		display = (int)jObject["display"];
-		type = new Root1((JObject)jObject["type"]);
-			items = new List<>();
-	array = jObject["items"].ToString();
-	foreach(var item in array)
-	{
-		items.Add(new ((JObject)item));
-	}
-
-	}
-
-    #endregion	
-
     #region Fields
 	
-	private string lastBuildDate;
-	private int total;
-	private int start;
-	private int display;
-	private Root1 type;
-	private List<items1> items;
+	private string _title;
+	private string _link;
+	private string _category;
+	private string _description;
+	private string _telephone;
+	private string _address;
+	private string _roadAddress;
+	private string _mapx;
+	private string _mapy;
 	
     #endregion
 
     #region Properties 
 	
-	public string LastBuildDate {get; set;}
-	public int Total {get; set;}
-	public int Start {get; set;}
-	public int Display {get; set;}
-	public Root1 Type {get; set;}
-	public List<items1> Items {get; set;}
+	public string Title {get; set;}
+	public string Link {get; set;}
+	public string Category {get; set;}
+	public string Description {get; set;}
+	public string Telephone {get; set;}
+	public string Address {get; set;}
+	public string RoadAddress {get; set;}
+	public string Mapx {get; set;}
+	public string Mapy {get; set;}
     
     #endregion
+
+	#region Constructors
+
+	public ()
+	{}
+
+	public (JObject jObject)
+	{
+		
+		_title = (string)jObject["title"];
+		_link = (string)jObject["link"];
+		_category = (string)jObject["category"];
+		_description = (string)jObject["description"];
+		_telephone = (string)jObject["telephone"];
+		_address = (string)jObject["address"];
+		_roadAddress = (string)jObject["roadAddress"];
+		_mapx = (string)jObject["mapx"];
+		_mapy = (string)jObject["mapy"];
+	}
+
+    #endregion	
 }

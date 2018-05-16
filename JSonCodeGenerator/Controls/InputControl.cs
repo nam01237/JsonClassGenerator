@@ -31,6 +31,11 @@ namespace JSonCodeGenerator.Controls
             if(GenerateButtonClicked != null)
                 GenerateButtonClicked(this, args);
         }
+
+        private void txt_FeildFormat_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class GenerateButtonClickedEventArgs : EventArgs

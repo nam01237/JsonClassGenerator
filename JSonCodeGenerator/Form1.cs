@@ -29,7 +29,7 @@ namespace JSonCodeGenerator
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            Template.LoadDefaultTemplate();
+            TemplateString.LoadDefaultTemplate();
         }
 
         private void InitializeInstance()
@@ -55,10 +55,10 @@ namespace JSonCodeGenerator
 
             JClassInfo temp = _jClassCreater.Create(jObject);
             ClassInfoTreeNode classInfoTreeNode = new ClassInfoTreeNode( temp );
-            classInfoTreeNode.ClassCode =
-                ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)classInfoTreeNode.JInfo);
+            //classInfoTreeNode.ClassCode = ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat,(JClassInfo) classInfoTreeNode.JInfo);
 
             SetNode(classInfoTreeNode);
+
             usc_CodeViewer.ClearTreeView();
             usc_CodeViewer.AddNode(classInfoTreeNode);
             usc_CodeViewer.SetCodeText(classInfoTreeNode.ClassCode);
@@ -69,12 +69,14 @@ namespace JSonCodeGenerator
             #region
             if (node.JInfo is JClassInfo)
             {
+                node.ClassCode = ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)node.JInfo);
+
                 foreach (JInfo item in ((JClassInfo)node.JInfo).Properties)
                 {
                     if (item is JClassInfo || item is JArrayInfo)
                     {
                         ClassInfoTreeNode childNode = new ClassInfoTreeNode(item);
-
+                    
                         node.Nodes.Add(childNode);
 
                         SetNode(childNode);
