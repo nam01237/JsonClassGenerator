@@ -97,7 +97,11 @@ namespace JSonCodeGenerator
             #endregion
         }
 
+        private void usc_CodeViewer_RenameButtonClicked(object sender, RenameButtonClickedEventArgs e)
+        {
 
+
+        }
     }
 
     

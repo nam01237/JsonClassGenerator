@@ -36,8 +36,9 @@
             // 
             this.usc_CodeViewer.Location = new System.Drawing.Point(1, 313);
             this.usc_CodeViewer.Name = "usc_CodeViewer";
-            this.usc_CodeViewer.Size = new System.Drawing.Size(729, 336);
+            this.usc_CodeViewer.Size = new System.Drawing.Size(729, 349);
             this.usc_CodeViewer.TabIndex = 1;
+            this.usc_CodeViewer.RenameButtonClicked += new System.EventHandler<JSonCodeGenerator.Controls.RenameButtonClickedEventArgs>(this.usc_CodeViewer_RenameButtonClicked);
             // 
             // usc_Input
             // 
@@ -51,7 +52,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 642);
+            this.ClientSize = new System.Drawing.Size(725, 661);
             this.Controls.Add(this.usc_Input);
             this.Controls.Add(this.usc_CodeViewer);
             this.Name = "Form1";

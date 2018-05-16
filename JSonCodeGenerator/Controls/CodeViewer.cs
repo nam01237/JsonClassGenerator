@@ -48,6 +48,11 @@ namespace JSonCodeGenerator.Controls
 
         private void btn_Rename_Click(object sender, EventArgs e)
         {
+            if (trv_ClassInfo.SelectedNode == null)
+            {
+                MessageBox.Show("바꿀 항목을 선택하세요", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
             OnRenameButtonClicked(new RenameButtonClickedEventArgs((ClassInfoTreeNode) trv_ClassInfo.SelectedNode));
         }
 
