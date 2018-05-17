@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 using JSonCodeGenerator.Controls;
-using JSonCodeGenerator.Generate;
 using Newtonsoft.Json.Linq;
 using NJsonObject.Generate;
 using NJsonObject.ObjectInfo;

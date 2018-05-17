@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using JSonCodeGenerator.Generate;
+using JSonCodeGenerator.Forms;
+using NJsonObject.Generate;
 
 namespace JSonCodeGenerator.Controls
 {
     public partial class InputControl : UserControl
     {
+        private CautionForm cautionForm = new CautionForm();
+
         public InputControl()
         {
             InitializeComponent();
@@ -23,9 +26,9 @@ namespace JSonCodeGenerator.Controls
             int declare = 0;
 
             if (cbx_Property.Checked)
-                declare |= (int)DeclareMember.Property;
+                declare |= (int)DeclareContent.Property;
             if (cbx_Filed.Checked)
-                declare |= (int)DeclareMember.Filed;
+                declare |= (int)DeclareContent.Filed;
 
             GenerateButtonClickedEventArgs args = new GenerateButtonClickedEventArgs(txt_JsonString.Text, txt_FeildFormat.Text, txt_PropertyFormat.Text, declare);
 
@@ -69,6 +72,20 @@ namespace JSonCodeGenerator.Controls
                txt_FeildFormat.Enabled = false;
             }
         }
+
+        private void pb_Caution_MouseEnter(object sender, EventArgs e)
+        {
+            cautionForm.Show();
+            cautionForm.Location = Cursor.Position;
+        }
+
+        private void pb_Caution_MouseLeave(object sender, EventArgs e)
+        {
+            if (cautionForm != null)
+                cautionForm.Visible = false;
+        }
+
+
     }
 
     public class GenerateButtonClickedEventArgs : EventArgs

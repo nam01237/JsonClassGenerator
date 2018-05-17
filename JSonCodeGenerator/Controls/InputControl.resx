@@ -239,4 +239,19 @@
     ]
 }</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pb_Caution.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxAAAAsQAa0jvXUAAAHPSURBVFhH7ZZNKERRGIbH+Jn8NJMa7r1DSn4SsmEhpczK
+        kp1kYWVFiS1lw54FKWVnzZaylPwsLNSEbCjcmbBUktd7ukczrtO4587Y3afe1bnn+b7u+e6ZCQUEBPjh
+        CUZ1GtZgBsZ4BtZEBubQC2pjcvn/YLE+Zi8N842BK+9pGPuiGfl48QBC5RRvsMinq6gyNqydezRWyu2F
+        IYrzdR+oCv2R0zTqaqTGPyy+pZB7CmdkV2r8IQZNJdaJjcSo1OljwzxUSb/T2VOGaKwEx1dx5boT60Lq
+        9HhAIk7Bx29hNk3NpeCjOErla0AcRUO7Y9WA3/qISpYb7w1YU45VA26cdovc8d6AueRYNWDXcypZbrw2
+        wDlYcawa8FYbU8uy6e0vh5kI4+SmTrmekxmp9Y6N+haFyFfoGpBaPXh2lyrhd5LDEXR0l+HsNu8beORt
+        GpZKPbh50iX7kbXtGJZXo7h+qVeui3CW5qVOH9E5B+hIJfYS8QZv0BqROn/wB8Wk7M4t/yu8RZ/FHElN
+        YTyjoZHSc3eRPEmx8Ta5vTgAXRX8NGcpt13FcmK88sgWeI1XyW3Fh3NRyrNNstAii67bMDbFTcc/IcOi
+        SflYQECAR0KhL+ZEhLoQj69lAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

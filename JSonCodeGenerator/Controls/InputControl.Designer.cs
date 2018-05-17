@@ -30,14 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputControl));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbx_Filed = new System.Windows.Forms.CheckBox();
+            this.cbx_Property = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_PropertyFormat = new System.Windows.Forms.TextBox();
             this.txt_FeildFormat = new System.Windows.Forms.TextBox();
             this.txt_JsonString = new System.Windows.Forms.TextBox();
             this.btn_Generate = new System.Windows.Forms.Button();
-            this.cbx_Property = new System.Windows.Forms.CheckBox();
-            this.cbx_Filed = new System.Windows.Forms.CheckBox();
+            this.pb_Caution = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Caution)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -53,6 +55,30 @@
             this.groupBox1.Size = new System.Drawing.Size(711, 278);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // cbx_Filed
+            // 
+            this.cbx_Filed.AutoSize = true;
+            this.cbx_Filed.Location = new System.Drawing.Point(470, 181);
+            this.cbx_Filed.Name = "cbx_Filed";
+            this.cbx_Filed.Size = new System.Drawing.Size(79, 16);
+            this.cbx_Filed.TabIndex = 7;
+            this.cbx_Filed.Text = "Field 선언";
+            this.cbx_Filed.UseVisualStyleBackColor = true;
+            this.cbx_Filed.CheckedChanged += new System.EventHandler(this.cbx_Filed_CheckedChanged);
+            // 
+            // cbx_Property
+            // 
+            this.cbx_Property.AutoSize = true;
+            this.cbx_Property.Checked = true;
+            this.cbx_Property.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbx_Property.Location = new System.Drawing.Point(466, 17);
+            this.cbx_Property.Name = "cbx_Property";
+            this.cbx_Property.Size = new System.Drawing.Size(99, 16);
+            this.cbx_Property.TabIndex = 6;
+            this.cbx_Property.Text = "Property 선언";
+            this.cbx_Property.UseVisualStyleBackColor = true;
+            this.cbx_Property.CheckedChanged += new System.EventHandler(this.cbx_Property_CheckedChanged);
             // 
             // label1
             // 
@@ -105,40 +131,31 @@
             this.btn_Generate.UseVisualStyleBackColor = true;
             this.btn_Generate.Click += new System.EventHandler(this.btn_Generate_Click);
             // 
-            // cbx_Property
+            // pb_Caution
             // 
-            this.cbx_Property.AutoSize = true;
-            this.cbx_Property.Checked = true;
-            this.cbx_Property.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbx_Property.Location = new System.Drawing.Point(466, 17);
-            this.cbx_Property.Name = "cbx_Property";
-            this.cbx_Property.Size = new System.Drawing.Size(99, 16);
-            this.cbx_Property.TabIndex = 6;
-            this.cbx_Property.Text = "Property 선언";
-            this.cbx_Property.UseVisualStyleBackColor = true;
-            this.cbx_Property.CheckedChanged += new System.EventHandler(this.cbx_Property_CheckedChanged);
-            // 
-            // cbx_Filed
-            // 
-            this.cbx_Filed.AutoSize = true;
-            this.cbx_Filed.Location = new System.Drawing.Point(470, 181);
-            this.cbx_Filed.Name = "cbx_Filed";
-            this.cbx_Filed.Size = new System.Drawing.Size(79, 16);
-            this.cbx_Filed.TabIndex = 7;
-            this.cbx_Filed.Text = "Field 선언";
-            this.cbx_Filed.UseVisualStyleBackColor = true;
-            this.cbx_Filed.CheckedChanged += new System.EventHandler(this.cbx_Filed_CheckedChanged);
+            this.pb_Caution.Image = ((System.Drawing.Image)(resources.GetObject("pb_Caution.Image")));
+            this.pb_Caution.InitialImage = null;
+            this.pb_Caution.Location = new System.Drawing.Point(686, 9);
+            this.pb_Caution.Name = "pb_Caution";
+            this.pb_Caution.Size = new System.Drawing.Size(28, 25);
+            this.pb_Caution.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pb_Caution.TabIndex = 2;
+            this.pb_Caution.TabStop = false;
+            this.pb_Caution.MouseEnter += new System.EventHandler(this.pb_Caution_MouseEnter);
+            this.pb_Caution.MouseLeave += new System.EventHandler(this.pb_Caution_MouseLeave);
             // 
             // InputControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pb_Caution);
             this.Controls.Add(this.btn_Generate);
             this.Controls.Add(this.groupBox1);
             this.Name = "InputControl";
             this.Size = new System.Drawing.Size(730, 313);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Caution)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -153,5 +170,6 @@
         private System.Windows.Forms.Button btn_Generate;
         private System.Windows.Forms.CheckBox cbx_Filed;
         private System.Windows.Forms.CheckBox cbx_Property;
+        private System.Windows.Forms.PictureBox pb_Caution;
     }
 }

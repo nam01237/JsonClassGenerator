@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
-namespace JSonCodeGenerator.Generate
+namespace NJsonObject.Generate
 {
     public class TemplateString
     {

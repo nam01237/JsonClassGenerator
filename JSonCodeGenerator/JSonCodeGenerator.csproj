@@ -65,6 +65,12 @@
     <Compile Include="Controls\InputControl.Designer.cs">
       <DependentUpon>InputControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CautionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CautionForm.Designer.cs">
+      <DependentUpon>CautionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,9 +83,6 @@
     <Compile Include="Forms\RenameInputBox.Designer.cs">
       <DependentUpon>RenameInputBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generate\ClassCodeGenerator.cs" />
-    <Compile Include="Generate\EnumType.cs" />
-    <Compile Include="Generate\TemplateString.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\CodeViewer.resx">
@@ -87,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\InputControl.resx">
       <DependentUpon>InputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CautionForm.resx">
+      <DependentUpon>CautionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -102,6 +108,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -128,8 +135,9 @@
       <Name>NJSonObject</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\caution.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
 using NJsonObject.ObjectInfo;
 
-namespace JSonCodeGenerator.Generate
+namespace NJsonObject.Generate
 {
     public class ClassCodeGenerator
     {
@@ -17,12 +12,12 @@ namespace JSonCodeGenerator.Generate
         {
             string fields = "";
 
-            if ((declareMember & (int) DeclareMember.Filed) == (int) DeclareMember.Filed)
+            if ((declareMember & (int) DeclareContent.Filed) == (int) DeclareContent.Filed)
                 fields = CreateMemberString(jClassInfo.Properties, fieldFormat);
 
             string properties = "";
 
-            if ((declareMember & (int) DeclareMember.Property) == (int) DeclareMember.Property)
+            if ((declareMember & (int) DeclareContent.Property) == (int) DeclareContent.Property)
             {
                 jClassInfo.Properties.ConvertAll(x => x.Name = char.ToUpper(x.Name[0]) + x.Name.Substring(1));
                 properties = CreateMemberString(jClassInfo.Properties, propertyFormat);
