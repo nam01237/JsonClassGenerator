@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_CopyCode = new System.Windows.Forms.Button();
+            this.btn_Rename = new System.Windows.Forms.Button();
             this.txt_Code = new System.Windows.Forms.TextBox();
             this.trv_ClassInfo = new System.Windows.Forms.TreeView();
-            this.btn_Rename = new System.Windows.Forms.Button();
-            this.btn_CopyCode = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +47,25 @@
             this.groupBox1.Size = new System.Drawing.Size(723, 340);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btn_CopyCode
+            // 
+            this.btn_CopyCode.Location = new System.Drawing.Point(205, 15);
+            this.btn_CopyCode.Name = "btn_CopyCode";
+            this.btn_CopyCode.Size = new System.Drawing.Size(128, 23);
+            this.btn_CopyCode.TabIndex = 3;
+            this.btn_CopyCode.Text = "클립보드에 복사(&C)";
+            this.btn_CopyCode.UseVisualStyleBackColor = true;
+            // 
+            // btn_Rename
+            // 
+            this.btn_Rename.Location = new System.Drawing.Point(6, 16);
+            this.btn_Rename.Name = "btn_Rename";
+            this.btn_Rename.Size = new System.Drawing.Size(128, 23);
+            this.btn_Rename.TabIndex = 2;
+            this.btn_Rename.Text = "클래스명 바꾸기(&R)";
+            this.btn_Rename.UseVisualStyleBackColor = true;
+            this.btn_Rename.Click += new System.EventHandler(this.btn_Rename_Click);
             // 
             // txt_Code
             // 
@@ -64,25 +83,6 @@
             this.trv_ClassInfo.Size = new System.Drawing.Size(194, 290);
             this.trv_ClassInfo.TabIndex = 0;
             this.trv_ClassInfo.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trv_ClassInfo_AfterSelect);
-            // 
-            // btn_Rename
-            // 
-            this.btn_Rename.Location = new System.Drawing.Point(6, 16);
-            this.btn_Rename.Name = "btn_Rename";
-            this.btn_Rename.Size = new System.Drawing.Size(104, 23);
-            this.btn_Rename.TabIndex = 2;
-            this.btn_Rename.Text = "이름 바꾸기(&R)";
-            this.btn_Rename.UseVisualStyleBackColor = true;
-            this.btn_Rename.Click += new System.EventHandler(this.btn_Rename_Click);
-            // 
-            // btn_CopyCode
-            // 
-            this.btn_CopyCode.Location = new System.Drawing.Point(205, 15);
-            this.btn_CopyCode.Name = "btn_CopyCode";
-            this.btn_CopyCode.Size = new System.Drawing.Size(128, 23);
-            this.btn_CopyCode.TabIndex = 3;
-            this.btn_CopyCode.Text = "클립보드에 복사(&C)";
-            this.btn_CopyCode.UseVisualStyleBackColor = true;
             // 
             // CodeViewer
             // 

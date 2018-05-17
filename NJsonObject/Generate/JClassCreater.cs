@@ -25,14 +25,8 @@ namespace NJsonObject.Generate
             _jObject = jObject;
             _jProperties = _jObject.Properties().ToList();
 
-            if (jObject.Path != "")
-            {
-                _jClassInfo.Name = Converter.PathToName(jObject.Path);
-            }
-            else
-            {
-                _jClassInfo.Name = "Root";
-            }
+
+            _jClassInfo.Name = Converter.PathToName(jObject.Path);
 
             _jClassInfo.Type = "class";
             SetProperties();
@@ -54,7 +48,7 @@ namespace NJsonObject.Generate
                 {
                     JClassInfo temp = classCreater.Create((JObject)item);
                     temp.Parent = _jClassInfo;
-                    temp.Type = _jClassInfo.Name + (_jClassInfo.Properties.Count(x => x.Type == "class") + 1);
+                    //temp.Type = _jClassInfo.Name + (_jClassInfo.Properties.Count(x => x.Type == "class") + 1);
 
                     _jClassInfo.Properties.Add(temp);
                 }

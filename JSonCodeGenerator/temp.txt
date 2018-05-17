@@ -1,16 +1,7 @@
-class 
+class asdf
 {
     #region Fields
 	
-	private string _title;
-	private string _link;
-	private string _category;
-	private string _description;
-	private string _telephone;
-	private string _address;
-	private string _roadAddress;
-	private string _mapx;
-	private string _mapy;
 	
     #endregion
 
@@ -30,21 +21,21 @@ class
 
 	#region Constructors
 
-	public ()
+	public asdf()
 	{}
 
-	public (JObject jObject)
+	public asdf(JObject jObject)
 	{
 		
-		_title = (string)jObject["title"];
-		_link = (string)jObject["link"];
-		_category = (string)jObject["category"];
-		_description = (string)jObject["description"];
-		_telephone = (string)jObject["telephone"];
-		_address = (string)jObject["address"];
-		_roadAddress = (string)jObject["roadAddress"];
-		_mapx = (string)jObject["mapx"];
-		_mapy = (string)jObject["mapy"];
+		Title = (string)jObject["Title"];
+		Link = (string)jObject["Link"];
+		Category = (string)jObject["Category"];
+		Description = (string)jObject["Description"];
+		Telephone = (string)jObject["Telephone"];
+		Address = (string)jObject["Address"];
+		RoadAddress = (string)jObject["RoadAddress"];
+		Mapx = (string)jObject["Mapx"];
+		Mapy = (string)jObject["Mapy"];
 	}
 
     #endregion	

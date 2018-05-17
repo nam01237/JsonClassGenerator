@@ -51,9 +51,12 @@ namespace JSonCodeGenerator.Controls
             if (trv_ClassInfo.SelectedNode == null)
             {
                 MessageBox.Show("바꿀 항목을 선택하세요", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             OnRenameButtonClicked(new RenameButtonClickedEventArgs((ClassInfoTreeNode) trv_ClassInfo.SelectedNode));
+
+            //trv_ClassInfo.Invalidate();
         }
 
         public event EventHandler<RenameButtonClickedEventArgs> RenameButtonClicked;
@@ -62,6 +65,7 @@ namespace JSonCodeGenerator.Controls
         {
             if (RenameButtonClicked != null)
                 RenameButtonClicked(this, args);
+
         }
 
     }

@@ -1,6 +1,6 @@
-﻿namespace JSonCodeGenerator
+﻿namespace JSonCodeGenerator.Forms
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.

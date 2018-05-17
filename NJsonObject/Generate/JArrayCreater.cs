@@ -31,8 +31,6 @@ namespace NJsonObject.Generate
             SetType();
             SetClassInfos();
 
-            _jArrayInfo.Type = $"List<{_jArrayInfo.GenericType}>";
-
             return _jArrayInfo;
 
         }

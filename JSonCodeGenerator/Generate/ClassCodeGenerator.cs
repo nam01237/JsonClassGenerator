@@ -13,25 +13,26 @@ namespace JSonCodeGenerator.Generate
     public class ClassCodeGenerator
     {
 
-        public static string GenerateClassCode(string fieldFormat, string propertyFormat, JClassInfo jClassInfo)
+        public static string GenerateClassCode(string fieldFormat, string propertyFormat, JClassInfo jClassInfo, int declareMember)
         {
-            string fields = CreateMemberString(jClassInfo.Properties, fieldFormat);
+            string fields = "";
 
-            List<JInfo> upperInfos = new List<JInfo>();
-            string constructor = CreateConstructorString(jClassInfo.Properties);
+            if ((declareMember & (int) DeclareMember.Filed) == (int) DeclareMember.Filed)
+                fields = CreateMemberString(jClassInfo.Properties, fieldFormat);
 
-            foreach (JInfo item in jClassInfo.Properties)
+            string properties = "";
+
+            if ((declareMember & (int) DeclareMember.Property) == (int) DeclareMember.Property)
             {
-                JClassInfo temp = new JClassInfo{ Name = char.ToUpper(item.Name[0]) + item.Name.Substring(1) , Type = item.Type }; 
-
-                upperInfos.Add(temp);
+                jClassInfo.Properties.ConvertAll(x => x.Name = char.ToUpper(x.Name[0]) + x.Name.Substring(1));
+                properties = CreateMemberString(jClassInfo.Properties, propertyFormat);
             }
 
-            string properties = CreateMemberString(upperInfos, propertyFormat);
+            string constructor = CreateConstructorString(jClassInfo.Properties);
 
             string classTemplate = TemplateString.ClassTemplate;
 
-            classTemplate = classTemplate.Replace("{CN}", jClassInfo.Name);
+            classTemplate = classTemplate.Replace("{CN}", jClassInfo.Type);
             classTemplate = classTemplate.Replace("{FD}", fields);
             classTemplate = classTemplate.Replace("{PROP}", properties);
             classTemplate = classTemplate.Replace("{CONS}", constructor);

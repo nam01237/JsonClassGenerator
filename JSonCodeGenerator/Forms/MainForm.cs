@@ -1,11 +1,4 @@
-Ôªøusing System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 using System.Windows.Forms;
 using JSonCodeGenerator.Controls;
 using JSonCodeGenerator.Generate;
@@ -13,15 +6,16 @@ using Newtonsoft.Json.Linq;
 using NJsonObject.Generate;
 using NJsonObject.ObjectInfo;
 
-namespace JSonCodeGenerator
+namespace JSonCodeGenerator.Forms
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private JClassCreater _jClassCreater;
         private string _fieldFormat;
         private string _propertyFormat;
+        private int _declareMember;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             InitializeInstance();
@@ -46,15 +40,16 @@ namespace JSonCodeGenerator
             }
             catch (Exception exception)
             {
-                MessageBox.Show("json object ÏÉùÏÑ±Ï§ëÏóê ÏòàÏô∏ Î∞úÏÉù\n" + exception.Message, "ÏïåÎ¶º");
+                MessageBox.Show("json object ª˝º∫¡ﬂø° øπø‹ πﬂª˝\n" + exception.Message, "æÀ∏≤");
                 return;
             }
 
             _fieldFormat = e.FieldFormat;
             _propertyFormat = e.PropertyFormat;
+            _declareMember = e.DeclareMember;
 
             JClassInfo temp = _jClassCreater.Create(jObject);
-            ClassInfoTreeNode classInfoTreeNode = new ClassInfoTreeNode( temp );
+            ClassInfoTreeNode classInfoTreeNode = new ClassInfoTreeNode(temp);
             //classInfoTreeNode.ClassCode = ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat,(JClassInfo) classInfoTreeNode.JInfo);
 
             SetNode(classInfoTreeNode);
@@ -69,14 +64,14 @@ namespace JSonCodeGenerator
             #region
             if (node.JInfo is JClassInfo)
             {
-                node.ClassCode = ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)node.JInfo);
+                node.ClassCode = ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)node.JInfo, _declareMember);
 
                 foreach (JInfo item in ((JClassInfo)node.JInfo).Properties)
                 {
                     if (item is JClassInfo || item is JArrayInfo)
                     {
                         ClassInfoTreeNode childNode = new ClassInfoTreeNode(item);
-                    
+
                         node.Nodes.Add(childNode);
 
                         SetNode(childNode);
@@ -99,10 +94,41 @@ namespace JSonCodeGenerator
 
         private void usc_CodeViewer_RenameButtonClicked(object sender, RenameButtonClickedEventArgs e)
         {
+            ClassInfoTreeNode node = e.SelectedNode;
 
+            if (node.JInfo is JArrayInfo)
+            {
+                return;
+            }
 
+            ClassInfoTreeNode parent = (ClassInfoTreeNode)node.Parent;
+
+            node.JInfo.Type = "asdf";
+
+            if (parent != null)
+            {
+                if (parent.JInfo is JArrayInfo)
+                {
+                    if (((JArrayInfo)parent.JInfo).GenericType != "object")
+                    {
+                        ((JArrayInfo)parent.JInfo).GenericType = "asdf";
+                    }
+
+                    parent.Text = parent.JInfo.ToString();
+                }
+                else
+                {
+                    parent.ClassCode = ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat,
+                        (JClassInfo)parent.JInfo, _declareMember);
+                }
+            }
+
+            node.Text = node.JInfo.ToString();
+            node.ClassCode = ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)node.JInfo, _declareMember);
+
+            usc_CodeViewer.SetCodeText(node.ClassCode);
         }
     }
 
-    
+
 }

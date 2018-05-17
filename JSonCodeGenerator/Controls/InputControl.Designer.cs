@@ -30,20 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputControl));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_PropertyFormat = new System.Windows.Forms.TextBox();
             this.txt_FeildFormat = new System.Windows.Forms.TextBox();
             this.txt_JsonString = new System.Windows.Forms.TextBox();
             this.btn_Generate = new System.Windows.Forms.Button();
+            this.cbx_Property = new System.Windows.Forms.CheckBox();
+            this.cbx_Filed = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.cbx_Filed);
+            this.groupBox1.Controls.Add(this.cbx_Property);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txt_PropertyFormat);
             this.groupBox1.Controls.Add(this.txt_FeildFormat);
@@ -53,24 +53,6 @@
             this.groupBox1.Size = new System.Drawing.Size(711, 278);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(466, 119);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 12);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Property 형식";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(466, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 12);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Field 형식";
             // 
             // label1
             // 
@@ -83,7 +65,7 @@
             // 
             // txt_PropertyFormat
             // 
-            this.txt_PropertyFormat.Location = new System.Drawing.Point(468, 134);
+            this.txt_PropertyFormat.Location = new System.Drawing.Point(466, 36);
             this.txt_PropertyFormat.Multiline = true;
             this.txt_PropertyFormat.Name = "txt_PropertyFormat";
             this.txt_PropertyFormat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -93,13 +75,14 @@
             // 
             // txt_FeildFormat
             // 
-            this.txt_FeildFormat.Location = new System.Drawing.Point(468, 38);
+            this.txt_FeildFormat.Enabled = false;
+            this.txt_FeildFormat.Location = new System.Drawing.Point(470, 203);
             this.txt_FeildFormat.Multiline = true;
             this.txt_FeildFormat.Name = "txt_FeildFormat";
             this.txt_FeildFormat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_FeildFormat.Size = new System.Drawing.Size(237, 68);
             this.txt_FeildFormat.TabIndex = 1;
-            this.txt_FeildFormat.Text = "private {TYPE} _{NAME};";
+            this.txt_FeildFormat.Text = "public {TYPE} _{NAME};";
             this.txt_FeildFormat.TextChanged += new System.EventHandler(this.txt_FeildFormat_TextChanged);
             // 
             // txt_JsonString
@@ -122,6 +105,30 @@
             this.btn_Generate.UseVisualStyleBackColor = true;
             this.btn_Generate.Click += new System.EventHandler(this.btn_Generate_Click);
             // 
+            // cbx_Property
+            // 
+            this.cbx_Property.AutoSize = true;
+            this.cbx_Property.Checked = true;
+            this.cbx_Property.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbx_Property.Location = new System.Drawing.Point(466, 17);
+            this.cbx_Property.Name = "cbx_Property";
+            this.cbx_Property.Size = new System.Drawing.Size(99, 16);
+            this.cbx_Property.TabIndex = 6;
+            this.cbx_Property.Text = "Property 선언";
+            this.cbx_Property.UseVisualStyleBackColor = true;
+            this.cbx_Property.CheckedChanged += new System.EventHandler(this.cbx_Property_CheckedChanged);
+            // 
+            // cbx_Filed
+            // 
+            this.cbx_Filed.AutoSize = true;
+            this.cbx_Filed.Location = new System.Drawing.Point(470, 181);
+            this.cbx_Filed.Name = "cbx_Filed";
+            this.cbx_Filed.Size = new System.Drawing.Size(79, 16);
+            this.cbx_Filed.TabIndex = 7;
+            this.cbx_Filed.Text = "Field 선언";
+            this.cbx_Filed.UseVisualStyleBackColor = true;
+            this.cbx_Filed.CheckedChanged += new System.EventHandler(this.cbx_Filed_CheckedChanged);
+            // 
             // InputControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -143,8 +150,8 @@
         private System.Windows.Forms.TextBox txt_PropertyFormat;
         private System.Windows.Forms.TextBox txt_FeildFormat;
         private System.Windows.Forms.TextBox txt_JsonString;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_Generate;
+        private System.Windows.Forms.CheckBox cbx_Filed;
+        private System.Windows.Forms.CheckBox cbx_Property;
     }
 }
