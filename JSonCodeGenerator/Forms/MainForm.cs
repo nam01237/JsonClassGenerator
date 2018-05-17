@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using JSonCodeGenerator.Controls;
 using JSonCodeGenerator.Generate;
@@ -103,7 +104,12 @@ namespace JSonCodeGenerator.Forms
 
             ClassInfoTreeNode parent = (ClassInfoTreeNode)node.Parent;
 
-            node.JInfo.Type = "asdf";
+            RenameInputBox inputBox = new RenameInputBox();
+
+            if (inputBox.ShowDialog() != DialogResult.OK)
+                return;
+            
+            node.JInfo.Type = inputBox.InputString;
 
             if (parent != null)
             {

@@ -56,6 +56,7 @@
             this.btn_CopyCode.TabIndex = 3;
             this.btn_CopyCode.Text = "클립보드에 복사(&C)";
             this.btn_CopyCode.UseVisualStyleBackColor = true;
+            this.btn_CopyCode.Click += new System.EventHandler(this.btn_CopyCode_Click);
             // 
             // btn_Rename
             // 

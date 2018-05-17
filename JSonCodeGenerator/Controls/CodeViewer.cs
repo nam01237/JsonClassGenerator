@@ -68,6 +68,10 @@ namespace JSonCodeGenerator.Controls
 
         }
 
+        private void btn_CopyCode_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txt_Code.Text);
+        }
     }
 
     public class RenameButtonClickedEventArgs : EventArgs
