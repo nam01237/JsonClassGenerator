@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using NJsonObject.ObjectInfo;
 using System.Diagnostics;
+using NJsonObject.etc;
 
 namespace NJsonObject.Generate
 {
@@ -19,10 +20,9 @@ namespace NJsonObject.Generate
             string properties = "";
 
             if ((declareMember & (int) DeclareContent.Property) == (int) DeclareContent.Property)
-            {
-                jClassInfo.Properties.ConvertAll(x => x.Name = char.ToUpper(x.Name[0]) + x.Name.Substring(1));
-                properties = CreateMemberString(jClassInfo.Properties, propertyFormat);
-            }
+                properties = CreateMemberString(jClassInfo.Properties, propertyFormat, true);
+
+            //jClassInfo.Properties.ConvertAll(x => x.Name = char.ToUpper(x.Name[0]) + x.Name.Substring(1));
 
             string constructor = CreateConstructorString(jClassInfo.Properties);
 
@@ -38,7 +38,7 @@ namespace NJsonObject.Generate
             jClassInfo.ClassCode =  classTemplate;
         }
 
-        private static string CreateMemberString(List<JInfo> members, string formatString)
+        private static string CreateMemberString(List<JInfo> members, string formatString, bool upperFirst = false)
         {
             StringBuilder fieldString = new StringBuilder();
 
@@ -48,7 +48,13 @@ namespace NJsonObject.Generate
 
                 tempString = tempString.Replace("{TYPE}", item.Type);
                 int nameStart = tempString.IndexOf("{NAME}");
-                tempString = tempString.Replace("{NAME}", item.Name);
+
+                if (!upperFirst)
+                    tempString = tempString.Replace("{NAME}", item.Name);
+                else
+                    tempString = tempString.Replace("{NAME}", (char.ToUpper(item.Name[0]) + item.Name.Substring(1)) );
+
+                tempString = tempString.Replace("{MNAME}", item.UsetDefineName);
 
                 item.UsetDefineName = ExtractName(tempString, nameStart);
                 fieldString.AppendLine();
@@ -161,7 +167,7 @@ namespace NJsonObject.Generate
                 string temp = declareString.Substring(index, 1);
                 index++;
 
-                if (temp == " ")
+                if (temp == " " || temp == ";" )
                     break;
                 else
                 {

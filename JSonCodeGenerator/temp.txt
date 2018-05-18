@@ -2,20 +2,20 @@ class items1
 {
     #region Fields
 	
+	public string _titlesssss;
+	public string _linksssss;
+	public string _categorysssss;
+	public string _descriptionsssss;
+	public string _telephonesssss;
+	public string _addresssssss;
+	public string _roadAddresssssss;
+	public string _mapxsssss;
+	public string _mapysssss;
 	
     #endregion
 
     #region Properties 
 	
-	public string _Title {get; set;}
-	public string _Link {get; set;}
-	public string _Category {get; set;}
-	public string _Description {get; set;}
-	public string _Telephone {get; set;}
-	public string _Address {get; set;}
-	public string _RoadAddress {get; set;}
-	public string _Mapx {get; set;}
-	public string _Mapy {get; set;}
     
     #endregion
 
@@ -27,15 +27,15 @@ class items1
 	public items1(JObject jObject)
 	{
 		
-		_Title = (string)jObject["Title"];
-		_Link = (string)jObject["Link"];
-		_Category = (string)jObject["Category"];
-		_Description = (string)jObject["Description"];
-		_Telephone = (string)jObject["Telephone"];
-		_Address = (string)jObject["Address"];
-		_RoadAddress = (string)jObject["RoadAddress"];
-		_Mapx = (string)jObject["Mapx"];
-		_Mapy = (string)jObject["Mapy"];
+		_titlesssss = (string)jObject["title"];
+		_linksssss = (string)jObject["link"];
+		_categorysssss = (string)jObject["category"];
+		_descriptionsssss = (string)jObject["description"];
+		_telephonesssss = (string)jObject["telephone"];
+		_addresssssss = (string)jObject["address"];
+		_roadAddresssssss = (string)jObject["roadAddress"];
+		_mapxsssss = (string)jObject["mapx"];
+		_mapysssss = (string)jObject["mapy"];
 	}
 
     #endregion	

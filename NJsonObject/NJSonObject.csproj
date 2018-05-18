@@ -51,10 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="etc\JsonType.cs" />
+    <Compile Include="etc\SharpType.cs" />
     <Compile Include="Generate\CodeGenerate\ClassCodeGenerator.cs" />
     <Compile Include="Generate\CodeGenerate\ClassFileCreater.cs" />
     <Compile Include="Generate\JInfoGenerate\Converter.cs" />
-    <Compile Include="Generate\CodeGenerate\EnumType.cs" />
+    <Compile Include="etc\EnumType.cs" />
     <Compile Include="Generate\JInfoGenerate\JClassCreater.cs" />
     <Compile Include="Generate\JInfoGenerate\JArrayCreater.cs" />
     <Compile Include="Generate\JInfoGenerate\JTypeSetter.cs" />
