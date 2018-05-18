@@ -1,4 +1,4 @@
-class items1
+class Sub2
 {
     #region Fields
 	
@@ -7,39 +7,35 @@ class items1
 
     #region Properties 
 	
-	public int? _A1 {get; set;}
-	public int? _A2 {get; set;}
-	public string _Title {get; set;}
-	public string _Link {get; set;}
-	public string _Category {get; set;}
-	public string _Description {get; set;}
-	public string _Telephone {get; set;}
-	public string _Address {get; set;}
-	public string _RoadAddress {get; set;}
-	public string _Mapx {get; set;}
-	public string _Mapy {get; set;}
+	public string Title {get; set;}
+	public string Link {get; set;}
+	public string Category {get; set;}
+	public string Description {get; set;}
+	public string Telephone {get; set;}
+	public string Address {get; set;}
+	public string RoadAddress {get; set;}
+	public string Mapx {get; set;}
+	public string Mapy {get; set;}
     
     #endregion
 
 	#region Constructors
 
-	public items1()
+	public Sub2()
 	{}
 
-	public items1(JObject jObject)
+	public Sub2(JObject jObject)
 	{
 		
-		_A1 = (int?)jObject["a1"];
-		_A2 = (int?)jObject["a2"];
-		_Title = (string)jObject["title"];
-		_Link = (string)jObject["link"];
-		_Category = (string)jObject["category"];
-		_Description = (string)jObject["description"];
-		_Telephone = (string)jObject["telephone"];
-		_Address = (string)jObject["address"];
-		_RoadAddress = (string)jObject["roadAddress"];
-		_Mapx = (string)jObject["mapx"];
-		_Mapy = (string)jObject["mapy"];
+		Title = (string)jObject["title"];
+		Link = (string)jObject["link"];
+		Category = (string)jObject["category"];
+		Description = (string)jObject["description"];
+		Telephone = (string)jObject["telephone"];
+		Address = (string)jObject["address"];
+		RoadAddress = (string)jObject["roadAddress"];
+		Mapx = (string)jObject["mapx"];
+		Mapy = (string)jObject["mapy"];
 	}
 
     #endregion	

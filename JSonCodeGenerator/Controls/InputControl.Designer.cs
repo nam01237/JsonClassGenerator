@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputControl));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbx_Filed = new System.Windows.Forms.CheckBox();
             this.cbx_Property = new System.Windows.Forms.CheckBox();
@@ -118,7 +117,6 @@
             this.txt_JsonString.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_JsonString.Size = new System.Drawing.Size(456, 234);
             this.txt_JsonString.TabIndex = 0;
-            this.txt_JsonString.Text = resources.GetString("txt_JsonString.Text");
             // 
             // btn_Generate
             // 

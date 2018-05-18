@@ -14,8 +14,23 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            goo g  = new goo();;
+            goo g = new goo(); ;
             g.foo();
+
+            //string json = TempStringReader.GetJsonString("..//..//..//samplej2.txt");
+            
+            //JObject jObject = JObject.Parse(json);
+            //JArray array = (JArray)jObject["items"];
+
+            //JClassCreater creater = new JClassCreater();
+
+            //JClassInfo jc1 = creater.Create((JObject)array[0]);
+            //JClassInfo jc2 = creater.Create((JObject)array[1]);
+
+            //Console.WriteLine(jc1.Equals(jc2));
+
+            //Console.WriteLine(jc2.Properties[0]);
+            //Console.WriteLine(jc2.Properties[1]);
         }
 
     }
@@ -38,7 +53,7 @@ namespace Test
             Console.WriteLine(root.Type.Age);
             foreach (var item in root.Itmes2)
             {
-                Console.Write(item+", ");
+                Console.Write(item + ", ");
             }
 
             Console.WriteLine();

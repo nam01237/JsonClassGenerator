@@ -16,6 +16,7 @@ namespace NJsonObject.etc
         public const string Property = "Property";
         public const string Null = "Null";
         public const string Array = "Array";
+        public const string Undefined = "Undefined";
 
     }
 }

@@ -34,6 +34,9 @@ namespace NJsonObject.Generate
                 case JsonType.Null:
                     convertString = SharpType.Null;
                     break;
+                case JsonType.Undefined:
+                    convertString = SharpType.Null;
+                    break;
             }
 
             return convertString;

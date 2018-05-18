@@ -1,4 +1,6 @@
-﻿namespace NJsonObject.ObjectInfo
+﻿using NJsonObject.etc;
+
+namespace NJsonObject.ObjectInfo
 {
     public class JValueInfo : JInfo
     {
@@ -11,11 +13,27 @@
                 return false;
 
 
-            if (Name == ((JValueInfo)other).Name && Type == ((JValueInfo)other).Type)
-                return true;
-            else
-                return false;
+            if (Name == ((JValueInfo)other).Name)
+            {
+                if( (Type == ((JValueInfo)other).Type) )
+                    return true;
+
+                if (Type == SharpType.Null)
+                {
+                    Type = ((JValueInfo) other).Type;
+                    return true;
+                }
+
+                if (((JValueInfo) other).Type == SharpType.Null)
+                {
+                    ((JValueInfo) other).Type = Type;
+                    return true;
+                }
+            }
+
+            return false;
         }
+
 
         public override int GetHashCode()
         {

@@ -1,11 +1,7 @@
 
     {
-         "name" : "kim",
-         "age"  : 19,
-	 "type" : { "num" : 14 },
-	 "double" : 3.14,
-	 "bool" : true,
-	 "list" : [ 10, 20 ],
-	 "null" : null
+        "un" : null,
+        "name" : "kim",
+	"items" : [ { "nan" : 12, "min" : "a"}, {"nan" : , "min": "b" } ]
     }
 

@@ -15,10 +15,11 @@ namespace NJsonObject.ObjectInfo
                 return false;
 
             if (this.GetType() != other.GetType())
+                return false;
 
             foreach (var p in Properties)
             {
-                if (!((JClassInfo) other).Properties.Contains(p))
+                if (! ((JClassInfo) other).Properties.Contains(p) )
                     return false;
             }
 
