@@ -1,77 +1,54 @@
-﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
 namespace Test
 {
-    class Root
-    {
-        #region Fields
+	class Root
+{
+    #region Fields
+	
+	
+    #endregion
 
-        private string _lastBuildDate;
-        private int _total;
-        private int _start;
-        private int _display;
-        private Root1 _type;
-        private List<int> _itmes2;
-        private List<items1> _items;
+    #region Properties 
+	
+	public string LastBuildDate {get; set;}
+	public int? Total {get; set;}
+	public int? Start {get; set;}
+	public int? Display {get; set;}
+	public Sub1 Type {get; set;}
+	public List<int?> Itmes2 {get; set;}
+	public List<Sub2> Items {get; set;}
+    
+    #endregion
 
-        #endregion
+	#region Constructors
 
-        #region Properties 
+	public Root()
+	{}
 
-        public string LastBuildDate { get; set; }
-        public int Total { get; set; }
-        public int Start { get; set; }
-        public int Display { get; set; }
-        public Root1 Type { get; set; }
-        public List<int> Itmes2 { get; set; }
-        public List<items1> Items { get; set; }
+	public Root(JObject jObject)
+	{
+		JArray array;
+		LastBuildDate = (string)jObject["lastBuildDate"];
+		Total = (int?)jObject["total"];
+		Start = (int?)jObject["start"];
+		Display = (int?)jObject["display"];
+		Type = new Sub1((JObject)jObject["type"]);
+		Itmes2 = new List<int?>();
+		array = JArray.Parse(jObject["itmes2"].ToString());
+		foreach(var item in array)
+		{
+			Itmes2.Add(item.Value<int?>());
+		}
+		Items = new List<Sub2>();
+		array = JArray.Parse(jObject["items"].ToString());
+		foreach(var item in array)
+		{
+			Items.Add(new Sub2((JObject)item));
+		}
+	}
 
-        #endregion
-
-        #region Constructors
-
-        public Root()
-        { }
-
-        public Root(JObject jObject)
-        {
-            JArray array;
-            _lastBuildDate = (string)jObject["lastBuildDate"];
-            _total = (int)jObject["total"];
-            _start = (int)jObject["start"];
-            _display = (int)jObject["display"];
-            _type = new Root1((JObject)jObject["type"]);
-            _itmes2 = new List<int>();
-            array = JArray.Parse(jObject["itmes2"].ToString());
-            foreach (var item in array)
-            {
-                _itmes2.Add(item.Value<int>());
-            }
-            _items = new List<items1>();
-            array = JArray.Parse(jObject["items"].ToString());
-            foreach (var item in array)
-            {
-                _items.Add(new items1((JObject)item));
-            }
-        }
-
-        #endregion
-    }
-
-    internal class items1
-    {
-        public items1(JObject jObject)
-        { }
-    }
-
-    internal class Root1
-    {
-        public Root1(JObject jObject)
-        { }
-    }
+    #endregion	
+}
 }

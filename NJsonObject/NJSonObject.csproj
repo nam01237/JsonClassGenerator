@@ -51,14 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Generate\ClassCodeGenerator.cs" />
-    <Compile Include="Generate\Converter.cs" />
-    <Compile Include="Generate\EnumType.cs" />
-    <Compile Include="Generate\JClassCreater.cs" />
-    <Compile Include="Generate\JArrayCreater.cs" />
-    <Compile Include="Generate\JTypeSetter.cs" />
-    <Compile Include="Generate\TemplateString.cs" />
-    <Compile Include="Generate\TempStringReader.cs" />
+    <Compile Include="Generate\CodeGenerate\ClassCodeGenerator.cs" />
+    <Compile Include="Generate\CodeGenerate\ClassFileCreater.cs" />
+    <Compile Include="Generate\JInfoGenerate\Converter.cs" />
+    <Compile Include="Generate\CodeGenerate\EnumType.cs" />
+    <Compile Include="Generate\JInfoGenerate\JClassCreater.cs" />
+    <Compile Include="Generate\JInfoGenerate\JArrayCreater.cs" />
+    <Compile Include="Generate\JInfoGenerate\JTypeSetter.cs" />
+    <Compile Include="Generate\CodeGenerate\TemplateString.cs" />
+    <Compile Include="Generate\CodeGenerate\TempStringReader.cs" />
     <Compile Include="ObjectInfo\JArrayInfo.cs" />
     <Compile Include="ObjectInfo\JClassInfo.cs" />
     <Compile Include="ObjectInfo\JInfo.cs" />

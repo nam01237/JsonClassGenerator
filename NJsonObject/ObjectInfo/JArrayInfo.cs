@@ -26,10 +26,15 @@ namespace NJsonObject.ObjectInfo
             return (Name + Type + GenericType).GetHashCode();
         }
 
-        public override string ToString()
-        {
-            return $"{Type}<{GenericType}> {Name} ";
+        //public override string ToString()
+        //{
+        //    return $"{Type}<{GenericType}> {Name} ";
 
+        //}
+
+        public void SetType()
+        {
+            Type = $"List<{GenericType}>";
         }
     }
 }

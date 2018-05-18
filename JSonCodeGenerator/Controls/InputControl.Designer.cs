@@ -37,9 +37,8 @@
             this.txt_FeildFormat = new System.Windows.Forms.TextBox();
             this.txt_JsonString = new System.Windows.Forms.TextBox();
             this.btn_Generate = new System.Windows.Forms.Button();
-            this.pb_Caution = new System.Windows.Forms.PictureBox();
+            this.cb_Caution = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Caution)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -131,32 +130,31 @@
             this.btn_Generate.UseVisualStyleBackColor = true;
             this.btn_Generate.Click += new System.EventHandler(this.btn_Generate_Click);
             // 
-            // pb_Caution
+            // cb_Caution
             // 
-            this.pb_Caution.Image = ((System.Drawing.Image)(resources.GetObject("pb_Caution.Image")));
-            this.pb_Caution.InitialImage = null;
-            this.pb_Caution.Location = new System.Drawing.Point(686, 9);
-            this.pb_Caution.Name = "pb_Caution";
-            this.pb_Caution.Size = new System.Drawing.Size(28, 25);
-            this.pb_Caution.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pb_Caution.TabIndex = 2;
-            this.pb_Caution.TabStop = false;
-            this.pb_Caution.MouseEnter += new System.EventHandler(this.pb_Caution_MouseEnter);
-            this.pb_Caution.MouseLeave += new System.EventHandler(this.pb_Caution_MouseLeave);
+            this.cb_Caution.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cb_Caution.AutoSize = true;
+            this.cb_Caution.Image = global::JSonCodeGenerator.Properties.Resources.caution;
+            this.cb_Caution.Location = new System.Drawing.Point(686, 6);
+            this.cb_Caution.Name = "cb_Caution";
+            this.cb_Caution.Size = new System.Drawing.Size(30, 30);
+            this.cb_Caution.TabIndex = 4;
+            this.cb_Caution.UseVisualStyleBackColor = true;
+            this.cb_Caution.CheckedChanged += new System.EventHandler(this.cb_Caution_CheckedChanged);
             // 
             // InputControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pb_Caution);
+            this.Controls.Add(this.cb_Caution);
             this.Controls.Add(this.btn_Generate);
             this.Controls.Add(this.groupBox1);
             this.Name = "InputControl";
             this.Size = new System.Drawing.Size(730, 313);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Caution)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -170,6 +168,6 @@
         private System.Windows.Forms.Button btn_Generate;
         private System.Windows.Forms.CheckBox cbx_Filed;
         private System.Windows.Forms.CheckBox cbx_Property;
-        private System.Windows.Forms.PictureBox pb_Caution;
+        private System.Windows.Forms.CheckBox cb_Caution;
     }
 }

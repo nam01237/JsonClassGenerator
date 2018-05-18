@@ -10,26 +10,33 @@ using System.Windows.Forms;
 
 namespace JSonCodeGenerator.Forms
 {
-    public partial class RenameInputBox : Form
+    public partial class InputBox : Form
     {
         public string InputString { get; private set; }
 
-        public RenameInputBox()
+        public InputBox()
         {
             InitializeComponent();
         }
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            if (txt_ReName.Text == "")
+            if (txt_Input.Text == "")
             {
-                lbl_notice.Text = "바꿀 클래스명을 입력해주세요.";
+                lbl_notice.Text = "텍스트를 입력해주세요.";
                 return;
             }
 
             DialogResult = DialogResult.OK;
-            InputString = txt_ReName.Text;
+            InputString = txt_Input.Text;
             Close();
         }
+
+        public void SetMsgText(string text)
+        {
+            lbl_Message.Text = text;
+        }
     }
+
+   
 }

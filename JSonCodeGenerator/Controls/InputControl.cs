@@ -14,7 +14,7 @@ namespace JSonCodeGenerator.Controls
 {
     public partial class InputControl : UserControl
     {
-        private CautionForm cautionForm = new CautionForm();
+        private CautionForm cautionForm;
 
         public InputControl()
         {
@@ -73,19 +73,19 @@ namespace JSonCodeGenerator.Controls
             }
         }
 
-        private void pb_Caution_MouseEnter(object sender, EventArgs e)
+        private void cb_Caution_CheckedChanged(object sender, EventArgs e)
         {
-            cautionForm.Show();
-            cautionForm.Location = Cursor.Position;
+            if (cb_Caution.Checked)
+            {
+                cautionForm = new CautionForm();
+                cautionForm.Show();
+                cautionForm.Location = Cursor.Position;
+            }
+            else
+            {
+                cautionForm.Close();
+            }
         }
-
-        private void pb_Caution_MouseLeave(object sender, EventArgs e)
-        {
-            if (cautionForm != null)
-                cautionForm.Visible = false;
-        }
-
-
     }
 
     public class GenerateButtonClickedEventArgs : EventArgs

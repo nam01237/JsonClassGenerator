@@ -8,7 +8,7 @@ namespace NJsonObject.Generate
     public class ClassCodeGenerator
     {
 
-        public static string GenerateClassCode(string fieldFormat, string propertyFormat, JClassInfo jClassInfo, int declareMember)
+        public static void GenerateClassCode(string fieldFormat, string propertyFormat, JClassInfo jClassInfo, int declareMember)
         {
             string fields = "";
 
@@ -34,7 +34,7 @@ namespace NJsonObject.Generate
 
             File.WriteAllText("..//..//temp.txt", classTemplate);
 
-            return classTemplate;
+            jClassInfo.ClassCode =  classTemplate;
         }
 
         private static string CreateMemberString(List<JInfo> members, string formatString)

@@ -10,26 +10,53 @@ using NJsonObject.ObjectInfo;
 
 namespace Test
 {
-
     class Program
     {
         static void Main(string[] args)
         {
-            string str = TempStringReader.GetJsonString("../../../samplej2.txt");
-            JObject jo = JObject.Parse(str);
+            goo g  = new goo();;
+            g.foo();
+        }
 
-            JClassInfo jc = new JClassInfo();
+    }
 
-            int x = (int)jo["age"];
+    public class goo
+    {
+        public void foo()
+        {
+            string json = TempStringReader.GetJsonString("..//..//..//temp.txt");
 
-            JArray ja = JArray.Parse(jo["list"].ToString());
+            JObject jObject = JObject.Parse(json);
 
-            foreach (var item in ja)
+            Root root = new Root(jObject);
+
+            Console.WriteLine(root.LastBuildDate);
+            Console.WriteLine(root.Total);
+            Console.WriteLine(root.Start);
+            Console.WriteLine(root.Display);
+            Console.WriteLine(root.Type.Name);
+            Console.WriteLine(root.Type.Age);
+            foreach (var item in root.Itmes2)
             {
-                
+                Console.Write(item+", ");
             }
 
-            Console.WriteLine(ja);
+            Console.WriteLine();
+
+            foreach (var item in root.Items)
+            {
+                Console.WriteLine(item.Title);
+                Console.WriteLine(item.Link);
+                Console.WriteLine(item.Category);
+                Console.WriteLine(item.Description);
+                Console.WriteLine(item.Telephone);
+                Console.WriteLine(item.Address);
+                Console.WriteLine(item.RoadAddress);
+                Console.WriteLine(item.Mapx);
+                Console.WriteLine(item.Mapy);
+
+            }
         }
     }
+
 }

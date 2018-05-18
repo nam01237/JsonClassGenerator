@@ -19,13 +19,13 @@ namespace NJsonObject.Generate
                     convertString = "string";
                     break;
                 case "Integer":
-                    convertString = "int";
+                    convertString = "int?";
                     break;
                 case "Boolean":
-                    convertString = "bool";
+                    convertString = "bool?";
                     break;
                 case "Float":
-                    convertString = "double";
+                    convertString = "double?";
                     break;
                 case "Property":
                     convertString = "class";

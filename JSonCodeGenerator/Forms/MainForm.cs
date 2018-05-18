@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using JSonCodeGenerator.Controls;
 using Newtonsoft.Json.Linq;
 using NJsonObject.Generate;
+using NJsonObject.Generate.CodeGenerate;
 using NJsonObject.ObjectInfo;
 
 namespace JSonCodeGenerator.Forms
@@ -64,7 +65,8 @@ namespace JSonCodeGenerator.Forms
             #region
             if (node.JInfo is JClassInfo)
             {
-                node.ClassCode = ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)node.JInfo, _declareMember);
+                 ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)node.JInfo, _declareMember);
+                node.ClassCode = ((JClassInfo) node.JInfo).ClassCode;
 
                 foreach (JInfo item in ((JClassInfo)node.JInfo).Properties)
                 {
@@ -103,35 +105,56 @@ namespace JSonCodeGenerator.Forms
 
             ClassInfoTreeNode parent = (ClassInfoTreeNode)node.Parent;
 
-            RenameInputBox inputBox = new RenameInputBox();
+
+            InputBox inputBox = new InputBox();
 
             if (inputBox.ShowDialog() != DialogResult.OK)
                 return;
-            
-            node.JInfo.Type = inputBox.InputString;
+
+            string inputString = inputBox.InputString;
+            node.JInfo.Type = inputString;
 
             if (parent != null)
             {
-                if (parent.JInfo is JArrayInfo)
+                JInfo parentInfo = parent.JInfo;
+
+                if (parentInfo is JArrayInfo)
                 {
-                    if (((JArrayInfo)parent.JInfo).GenericType != "object")
+                    if (((JArrayInfo)parentInfo).GenericType != "object")
                     {
-                        ((JArrayInfo)parent.JInfo).GenericType = "asdf";
+                        ((JArrayInfo)parentInfo).GenericType = inputString;
+                        ((JArrayInfo)parentInfo).SetType();
                     }
 
-                    parent.Text = parent.JInfo.ToString();
+                    parent.Text = parentInfo.ToString();
+                    ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat,
+                      (JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo , _declareMember);
+                    parent.ClassCode = ((JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo).ClassCode;
                 }
                 else
                 {
-                    parent.ClassCode = ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat,
-                        (JClassInfo)parent.JInfo, _declareMember);
+                    ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat,
+                        (JClassInfo)parentInfo, _declareMember);
+                    parent.ClassCode = ((JClassInfo) parentInfo).ClassCode;
                 }
             }
 
             node.Text = node.JInfo.ToString();
-            node.ClassCode = ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)node.JInfo, _declareMember);
+            ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)node.JInfo, _declareMember);
+            node.ClassCode = ((JClassInfo)node.JInfo).ClassCode;
 
             usc_CodeViewer.SetCodeText(node.ClassCode);
+        }
+
+        private void usc_CodeViewer_SaveButtonClicked(object sender, SaveButtonClickedEventArgs e)
+        {
+            InputBox inputBox = new InputBox();
+            inputBox.SetMsgText("네임스페이스 입력");
+
+            if (inputBox.ShowDialog() != DialogResult.OK)
+                return;
+            
+            ClassFileCreater.CreateClassFile( (JClassInfo)e.RootNode.JInfo, e.Path, inputBox.InputString);
         }
     }
 

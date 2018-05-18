@@ -14,10 +14,12 @@ namespace NJsonObject.Generate
         public static string RefTypeInit { get; private set; }
         public static string ValueTypeListInit { get; private set; }
         public static string RefTypeListInit { get; private set; }
+        public static string FileTemplate { get; private set; }
 
         public static void LoadDefaultTemplate()
         {
             ClassTemplate = File.ReadAllText(TEMPLATE_PATH + "\\DefaultClassTemplate.nmt");
+            FileTemplate = File.ReadAllText(TEMPLATE_PATH + "\\DefaultFileTemplate.nmt");
             ValueTypeInit = File.ReadAllText(TEMPLATE_PATH + "\\ValueTypeInit.nmt");
             RefTypeInit = File.ReadAllText(TEMPLATE_PATH + "\\RefTypeInit.nmt");
             ValueTypeListInit = File.ReadAllText(TEMPLATE_PATH + "\\ValueTypeListInit.nmt");

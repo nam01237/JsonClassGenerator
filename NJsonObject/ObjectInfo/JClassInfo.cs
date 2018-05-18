@@ -7,6 +7,7 @@ namespace NJsonObject.ObjectInfo
     {
         public List<JInfo> Properties { get; set; }
         public JInfo Parent { get; set; }
+        public string ClassCode { get; set; }
 
         public override bool Equals(object other)
         {

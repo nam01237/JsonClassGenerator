@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_SaveFile = new System.Windows.Forms.Button();
+            this.btn_FindPath = new System.Windows.Forms.Button();
+            this.txt_SavePath = new System.Windows.Forms.TextBox();
             this.btn_CopyCode = new System.Windows.Forms.Button();
             this.btn_Rename = new System.Windows.Forms.Button();
             this.txt_Code = new System.Windows.Forms.TextBox();
             this.trv_ClassInfo = new System.Windows.Forms.TreeView();
-            this.txt_SavePath = new System.Windows.Forms.TextBox();
-            this.btn_FindPath = new System.Windows.Forms.Button();
-            this.btn_SaveFile = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,34 @@
             this.groupBox1.Size = new System.Drawing.Size(723, 340);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btn_SaveFile
+            // 
+            this.btn_SaveFile.Location = new System.Drawing.Point(624, 13);
+            this.btn_SaveFile.Name = "btn_SaveFile";
+            this.btn_SaveFile.Size = new System.Drawing.Size(93, 23);
+            this.btn_SaveFile.TabIndex = 6;
+            this.btn_SaveFile.Text = "파일 생성(&S)";
+            this.btn_SaveFile.UseVisualStyleBackColor = true;
+            this.btn_SaveFile.Click += new System.EventHandler(this.btn_SaveFile_Click);
+            // 
+            // btn_FindPath
+            // 
+            this.btn_FindPath.Location = new System.Drawing.Point(583, 13);
+            this.btn_FindPath.Name = "btn_FindPath";
+            this.btn_FindPath.Size = new System.Drawing.Size(35, 23);
+            this.btn_FindPath.TabIndex = 5;
+            this.btn_FindPath.Text = "...";
+            this.btn_FindPath.UseVisualStyleBackColor = true;
+            this.btn_FindPath.Click += new System.EventHandler(this.btn_FindPath_Click);
+            // 
+            // txt_SavePath
+            // 
+            this.txt_SavePath.Location = new System.Drawing.Point(288, 15);
+            this.txt_SavePath.Name = "txt_SavePath";
+            this.txt_SavePath.Size = new System.Drawing.Size(289, 21);
+            this.txt_SavePath.TabIndex = 4;
+            this.txt_SavePath.Text = "C:\\Users\\KCCI\\Desktop\\jsonobjectgenerator\\Test";
             // 
             // btn_CopyCode
             // 
@@ -91,31 +120,6 @@
             this.trv_ClassInfo.TabIndex = 0;
             this.trv_ClassInfo.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trv_ClassInfo_AfterSelect);
             // 
-            // txt_SavePath
-            // 
-            this.txt_SavePath.Location = new System.Drawing.Point(288, 15);
-            this.txt_SavePath.Name = "txt_SavePath";
-            this.txt_SavePath.Size = new System.Drawing.Size(289, 21);
-            this.txt_SavePath.TabIndex = 4;
-            // 
-            // btn_FindPath
-            // 
-            this.btn_FindPath.Location = new System.Drawing.Point(583, 13);
-            this.btn_FindPath.Name = "btn_FindPath";
-            this.btn_FindPath.Size = new System.Drawing.Size(35, 23);
-            this.btn_FindPath.TabIndex = 5;
-            this.btn_FindPath.Text = "...";
-            this.btn_FindPath.UseVisualStyleBackColor = true;
-            // 
-            // btn_SaveFile
-            // 
-            this.btn_SaveFile.Location = new System.Drawing.Point(624, 13);
-            this.btn_SaveFile.Name = "btn_SaveFile";
-            this.btn_SaveFile.Size = new System.Drawing.Size(93, 23);
-            this.btn_SaveFile.TabIndex = 6;
-            this.btn_SaveFile.Text = "파일 생성(&S)";
-            this.btn_SaveFile.UseVisualStyleBackColor = true;
-            // 
             // CodeViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -139,5 +143,6 @@
         private System.Windows.Forms.Button btn_SaveFile;
         private System.Windows.Forms.Button btn_FindPath;
         private System.Windows.Forms.TextBox txt_SavePath;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

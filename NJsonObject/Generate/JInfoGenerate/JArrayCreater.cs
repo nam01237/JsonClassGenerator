@@ -30,6 +30,7 @@ namespace NJsonObject.Generate
 
             SetType();
             SetClassInfos();
+            _jArrayInfo.SetType();
 
             return _jArrayInfo;
 
