@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NJsonObject.etc
+namespace NJsonObject
 {
-    class SharpType
+    public class SharpType
     {
         public const string Object = "object";
         public const string String = "string";

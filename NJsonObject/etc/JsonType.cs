@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NJsonObject.etc
+namespace NJsonObject
 {
     public class JsonType
     {

@@ -1,7 +1,0 @@
-
-    {
-        "un" : null,
-        "name" : "kim",
-	"items" : [ { "nan" : 12, "min" : "a"}, {"nan" : , "min": "b" } ]
-    }
-

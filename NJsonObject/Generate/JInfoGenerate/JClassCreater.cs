@@ -28,7 +28,7 @@ namespace NJsonObject.Generate
 
             _jClassInfo.Name = Converter.PathToName(jObject.Path);
 
-            _jClassInfo.Type = "class";
+            _jClassInfo.Type = SharpType.Class;
             SetProperties();
 
             return _jClassInfo;
@@ -44,7 +44,7 @@ namespace NJsonObject.Generate
 
             foreach (var item in jTokens)
             {
-                if (item.Type.ToString().Equals("Object"))
+                if (item.Type.ToString().Equals(JsonType.Object))
                 {
                     JClassInfo temp = classCreater.Create((JObject)item);
                     temp.Parent = _jClassInfo;
@@ -52,7 +52,7 @@ namespace NJsonObject.Generate
 
                     _jClassInfo.Properties.Add(temp);
                 }
-                else if (item.Type.ToString().Equals("Array"))
+                else if (item.Type.ToString().Equals(JsonType.Array))
                 {
                     JArray temp = (JArray)item;
                     _jClassInfo.Properties.Add(arrayCreater.Create(temp));

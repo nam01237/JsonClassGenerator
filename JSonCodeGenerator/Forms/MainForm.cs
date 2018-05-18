@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using NJsonObject.Generate;
 using NJsonObject.Generate.CodeGenerate;
 using NJsonObject.ObjectInfo;
+using NJsonObject;
 
 namespace JSonCodeGenerator.Forms
 {
@@ -120,7 +121,7 @@ namespace JSonCodeGenerator.Forms
 
                 if (parentInfo is JArrayInfo)
                 {
-                    if (((JArrayInfo)parentInfo).GenericType != "object")
+                    if (((JArrayInfo)parentInfo).GenericType != SharpType.Object)
                     {
                         ((JArrayInfo)parentInfo).GenericType = inputString;
                         ((JArrayInfo)parentInfo).SetType();

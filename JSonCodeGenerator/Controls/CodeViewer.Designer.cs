@@ -81,7 +81,6 @@
             this.txt_SavePath.Name = "txt_SavePath";
             this.txt_SavePath.Size = new System.Drawing.Size(289, 21);
             this.txt_SavePath.TabIndex = 4;
-            this.txt_SavePath.Text = "C:\\Users\\KCCI\\Desktop\\jsonobjectgenerator\\Test";
             // 
             // btn_CopyCode
             // 

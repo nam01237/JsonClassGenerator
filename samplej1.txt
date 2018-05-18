@@ -1,4 +1,0 @@
-[
-	20, 3.14, "string", true, null, { "name" : "string" }, { "int" : 10 }
-    
-]

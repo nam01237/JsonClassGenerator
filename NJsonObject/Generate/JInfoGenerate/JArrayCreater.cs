@@ -25,7 +25,7 @@ namespace NJsonObject.Generate
             _jArray = jArray;
 
             _jArrayInfo.Name = Converter.PathToName(jArray.Path);
-            _jArrayInfo.Type = "List";
+            _jArrayInfo.Type = SharpType.List;
             _jArrayInfo.ClassTypes = new List<JClassInfo>();
 
             SetType();
@@ -48,7 +48,7 @@ namespace NJsonObject.Generate
 
             if ( types.Count() > 1 )
             {
-                _jArrayInfo.GenericType = "object";
+                _jArrayInfo.GenericType = SharpType.Object;
             }
             else
             {
@@ -60,7 +60,7 @@ namespace NJsonObject.Generate
         private void SetClassInfos()
         {
             var classes = (from x in _jArray.Children()
-                          where x.Type.ToString() == "Object"
+                           where x.Type.ToString() == JsonType.Object
                           select x).ToList();
 
             if (classes.Count == 0)
@@ -81,10 +81,10 @@ namespace NJsonObject.Generate
 
             }
 
-            if (_jArrayInfo.GenericType == "class" && _jArrayInfo.ClassTypes.Count == 1)
+            if (_jArrayInfo.GenericType == SharpType.Class && _jArrayInfo.ClassTypes.Count == 1)
                 _jArrayInfo.GenericType = _jArrayInfo.ClassTypes[0].Type;
             else
-                _jArrayInfo.GenericType = "object";
+                _jArrayInfo.GenericType = SharpType.Object;
 
 
         }

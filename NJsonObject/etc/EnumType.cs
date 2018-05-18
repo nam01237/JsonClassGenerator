@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NJsonObject.etc
+namespace NJsonObject
 {
     [Flags]
     public enum DeclareContent

@@ -3,7 +3,6 @@ using System.IO;
 using System.Text;
 using NJsonObject.ObjectInfo;
 using System.Diagnostics;
-using NJsonObject.etc;
 
 namespace NJsonObject.Generate
 {
@@ -111,7 +110,7 @@ namespace NJsonObject.Generate
         {
             string tempString;
 
-            if (jArrayInfo.GenericType != "object")
+            if (jArrayInfo.GenericType != SharpType.Object)
             {
                 if (jArrayInfo.ClassTypes.Count == 1)
                 {

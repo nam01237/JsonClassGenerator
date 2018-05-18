@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using JsonObjectGenerator.analyze;
 using JSonCodeGenerator.Forms;
-using NJsonObject.etc;
+using NJsonObject;
 using NJsonObject.Generate;
 
 namespace JSonCodeGenerator.Controls
@@ -21,7 +21,7 @@ namespace JSonCodeGenerator.Controls
         public InputControl()
         {
             InitializeComponent();
-            txt_JsonString.Text = TempStringReader.GetJsonString("..//..//..//temp.txt");
+            //txt_JsonString.Text = TempStringReader.GetJsonString("..//..//..//temp.txt");
         }
 
         private void btn_Generate_Click(object sender, EventArgs e)

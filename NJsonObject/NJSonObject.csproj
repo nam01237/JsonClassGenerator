@@ -59,7 +59,6 @@
     <Compile Include="etc\EnumType.cs" />
     <Compile Include="Generate\JInfoGenerate\JClassCreater.cs" />
     <Compile Include="Generate\JInfoGenerate\JArrayCreater.cs" />
-    <Compile Include="Generate\JInfoGenerate\JTypeSetter.cs" />
     <Compile Include="Generate\CodeGenerate\TemplateString.cs" />
     <Compile Include="Generate\CodeGenerate\TempStringReader.cs" />
     <Compile Include="ObjectInfo\JArrayInfo.cs" />

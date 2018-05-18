@@ -1,4 +1,4 @@
-class Sub2
+class items1
 {
     #region Fields
 	
@@ -21,10 +21,10 @@ class Sub2
 
 	#region Constructors
 
-	public Sub2()
+	public items1()
 	{}
 
-	public Sub2(JObject jObject)
+	public items1(JObject jObject)
 	{
 		
 		Title = (string)jObject["title"];
