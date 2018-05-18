@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using NJsonObject.ObjectInfo;
+using System.Diagnostics;
 
 namespace NJsonObject.Generate
 {
@@ -46,8 +47,10 @@ namespace NJsonObject.Generate
                 string tempString = formatString;
 
                 tempString = tempString.Replace("{TYPE}", item.Type);
+                int nameStart = tempString.IndexOf("{NAME}");
                 tempString = tempString.Replace("{NAME}", item.Name);
 
+                item.UsetDefineName = ExtractName(tempString, nameStart);
                 fieldString.AppendLine();
                 fieldString.Append("\t");
                 fieldString.Append(tempString);
@@ -75,6 +78,7 @@ namespace NJsonObject.Generate
                     tempString = TemplateString.RefTypeInit;
                     tempString = tempString.Replace("{TYPE}", item.Type);
                     tempString = tempString.Replace("{NAME}", item.Name);
+                    tempString = tempString.Replace("{MNAME}", item.UsetDefineName);
                 }
                 else if (item is JArrayInfo)
                 {
@@ -85,6 +89,8 @@ namespace NJsonObject.Generate
                     tempString = TemplateString.ValueTypeInit;
                     tempString = tempString.Replace("{TYPE}", item.Type);
                     tempString = tempString.Replace("{NAME}", item.Name);
+                    tempString = tempString.Replace("{MNAME}", item.UsetDefineName);
+
                 }
 
                 constructorString.AppendLine();
@@ -106,14 +112,17 @@ namespace NJsonObject.Generate
                     tempString = TemplateString.RefTypeListInit;
 
                     tempString = tempString.Replace("{NAME}", jArrayInfo.Name);
+                    tempString = tempString.Replace("{MNAME}", jArrayInfo.UsetDefineName);
                     tempString = tempString.Replace("{CN}", jArrayInfo.ClassTypes[0].Type);
                     tempString = tempString.Replace("{GTYPE}", jArrayInfo.GenericType);
+
                 }
                 else
                 {
                     tempString = TemplateString.ValueTypeListInit;
 
                     tempString = tempString.Replace("{NAME}", jArrayInfo.Name);
+                    tempString = tempString.Replace("{MNAME}", jArrayInfo.UsetDefineName);
                     tempString = tempString.Replace("{GTYPE}", jArrayInfo.GenericType);
                 }
             }
@@ -122,9 +131,53 @@ namespace NJsonObject.Generate
                 tempString = $"{jArrayInfo.Name} = new List<object>()";
             }
 
+
             return tempString;
         }
 
+        private static string ExtractName(string declareString, int nameIndex)
+        {
+            StringBuilder name = new StringBuilder();
+
+            int index = nameIndex;
+
+            while(true)
+            {
+                index--;
+                string temp = declareString.Substring(index, 1);
+
+                if ( temp == " ")
+                    break;
+                else
+                {
+                    name.Insert(0, temp);
+                }
+            }
+
+            
+            index = nameIndex;
+            while(true)
+            {
+                string temp = declareString.Substring(index, 1);
+                index++;
+
+                if (temp == " ")
+                    break;
+                else
+                {
+                    name.Append(temp);
+                }
+            }
+
+            //Debug.WriteLine(name.ToString());
+
+            return name.ToString();
+        }
+
+
+
     }
+
+    
 
 }

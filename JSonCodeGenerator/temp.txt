@@ -1,0 +1,42 @@
+class items1
+{
+    #region Fields
+	
+	
+    #endregion
+
+    #region Properties 
+	
+	public string _Title {get; set;}
+	public string _Link {get; set;}
+	public string _Category {get; set;}
+	public string _Description {get; set;}
+	public string _Telephone {get; set;}
+	public string _Address {get; set;}
+	public string _RoadAddress {get; set;}
+	public string _Mapx {get; set;}
+	public string _Mapy {get; set;}
+    
+    #endregion
+
+	#region Constructors
+
+	public items1()
+	{}
+
+	public items1(JObject jObject)
+	{
+		
+		_Title = (string)jObject["Title"];
+		_Link = (string)jObject["Link"];
+		_Category = (string)jObject["Category"];
+		_Description = (string)jObject["Description"];
+		_Telephone = (string)jObject["Telephone"];
+		_Address = (string)jObject["Address"];
+		_RoadAddress = (string)jObject["RoadAddress"];
+		_Mapx = (string)jObject["Mapx"];
+		_Mapy = (string)jObject["Mapy"];
+	}
+
+    #endregion	
+}

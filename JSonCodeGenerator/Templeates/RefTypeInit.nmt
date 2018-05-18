@@ -1,1 +1,1 @@
-{NAME} = new {TYPE}((JObject)jObject["{NAME}"]);
+{MNAME} = new {TYPE}((JObject)jObject["{NAME}"]);
