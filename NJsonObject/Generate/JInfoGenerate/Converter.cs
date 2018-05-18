@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using NJsonObject.etc;
 
 namespace NJsonObject.Generate
 {
@@ -15,23 +16,23 @@ namespace NJsonObject.Generate
 
             switch (typeString)
             {
-                case "String":
-                    convertString = "string";
+                case JsonType.String:
+                    convertString = SharpType.String;
                     break;
-                case "Integer":
-                    convertString = "int?";
+                case JsonType.Inreger:
+                    convertString = SharpType.Int;
                     break;
-                case "Boolean":
-                    convertString = "bool?";
+                case JsonType.Boolean:
+                    convertString = SharpType.Bool;
                     break;
-                case "Float":
-                    convertString = "double?";
+                case JsonType.Float:
+                    convertString = SharpType.Double;
                     break;
-                case "Property":
-                    convertString = "class";
+                case JsonType.Property:
+                    convertString = SharpType.Class;
                     break;
-                case "Null":
-                    convertString = "null";
+                case JsonType.Null:
+                    convertString = SharpType.Null;
                     break;
             }
 

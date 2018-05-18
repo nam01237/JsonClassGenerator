@@ -111,7 +111,7 @@ namespace NJsonObject.Generate
         {
             string tempString;
 
-            if (jArrayInfo.GenericType != "object ")
+            if (jArrayInfo.GenericType != "object")
             {
                 if (jArrayInfo.ClassTypes.Count == 1)
                 {

@@ -20,7 +20,7 @@ namespace NJsonObject.Generate
                     return new JValueInfo { Name = jToken.Path, Type = "string" };
                 case "Integer":
                     return new JValueInfo { Name = jToken.Path, Type = "int" };
-                case "Boolean":
+                case "Bool":
                     return new JValueInfo { Name = jToken.Path, Type = "bool" };
                 case "Float":
                     return new JValueInfo { Name = jToken.Path, Type = "double" };

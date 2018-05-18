@@ -96,7 +96,7 @@
             this.txt_PropertyFormat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_PropertyFormat.Size = new System.Drawing.Size(237, 138);
             this.txt_PropertyFormat.TabIndex = 2;
-            this.txt_PropertyFormat.Text = "public {TYPE} _{NAME} {get; set;}";
+            this.txt_PropertyFormat.Text = "public {TYPE} {NAME} {get; set;}";
             // 
             // txt_FeildFormat
             // 

@@ -10,11 +10,11 @@ namespace NJsonObject.etc
     {
         public const string Object = "object";
         public const string String = "string";
-        public const string Inreger = "int?";
-        public const string Boolean = "bool?";
+        public const string Int = "int?";
+        public const string Bool = "bool?";
         public const string Double = "double?";
         public const string List = "List";
         public const string Class = "class";
-        public const string Array = "Array";
+        public const string Null = "null";
     }
 }
