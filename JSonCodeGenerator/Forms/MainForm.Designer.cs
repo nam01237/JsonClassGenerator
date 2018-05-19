@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.usc_Input = new JSonCodeGenerator.Controls.InputControl();
             this.usc_CodeViewer = new JSonCodeGenerator.Controls.CodeViewer();
             this.SuspendLayout();
@@ -53,11 +54,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(725, 669);
             this.Controls.Add(this.usc_Input);
             this.Controls.Add(this.usc_CodeViewer);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "Json Class 코드 생성기";
+            this.Text = "Generator";
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.ResumeLayout(false);
 
