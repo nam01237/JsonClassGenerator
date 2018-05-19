@@ -1,4 +1,9 @@
-class Book
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+
+namespace Test
+{
+	class Book
 {
     #region Fields
 	
@@ -25,4 +30,5 @@ class Book
 	}
 
     #endregion	
+}
 }
