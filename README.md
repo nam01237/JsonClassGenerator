@@ -21,7 +21,13 @@ Json 형식문자열을 입력받아 같은 형식의 Json 데이터를 파싱�
 6. 생성된 코드를 복사하여 사용하거나, '파일생성' 버튼으로 지정된 경로에 .cs 형식 파일로 저장 할 수 있습니다. (네임스페이스를 지정)
 
 ***
-- 생선된 cs파일 
+### 생선된 cs파일 
 
 ![jc3](https://user-images.githubusercontent.com/34447880/40354697-6e0aa3d4-5def-11e8-80bb-80a57685226f.PNG)
 ![jc4](https://user-images.githubusercontent.com/34447880/40354680-67f0965c-5def-11e8-9515-40e3058d3732.PNG)
+
+***
+### 주의사항
+1. 중첩 Array가 포함되면 제대로 작동안합니다.  
+2. 여러 타입의 클래스가 포함된 Array가 있다면  JObject를 받는 생성자에서 제대로 초기화하지 않습니다. 따로 데이터를 파싱하세요  
+4. Array나 Object 타입 변수들은 null 처리가 제대로 안될 수 있습니다.  
