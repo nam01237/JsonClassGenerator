@@ -1,34 +1,25 @@
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Test
 {
-	class Book
-{
-    #region Fields
-	
-	
-    #endregion
+    [JsonObject(MemberSerialization.OptOut)]
+    class Book
+    {
+        #region Fields
 
-    #region Properties 
-	
-	public string Name {get; set;}
-	public int? Price {get; set;}
-    
-    #endregion
 
-	#region Constructors
+        #endregion
 
-	public Book()
-	{}
+        #region Properties 
 
-	public Book(JObject jObject)
-	{
-		
-		Name = (string)jObject["name"];
-		Price = (int?)jObject["price"];
-	}
+        public string Name { get; set; }
+        public Data Data { get; set; }
+        public List<string> Friends { get; set; }
+        public List<BookInfo> Books { get; set; }
 
-    #endregion	
-}
+        #endregion
+
+    }
 }

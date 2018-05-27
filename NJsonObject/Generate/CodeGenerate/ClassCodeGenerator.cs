@@ -23,14 +23,14 @@ namespace NJsonObject.Generate
 
             //jClassInfo.Properties.ConvertAll(x => x.Name = char.ToUpper(x.Name[0]) + x.Name.Substring(1));
 
-            string constructor = CreateConstructorString(jClassInfo.Properties);
+           // string constructor = CreateConstructorString(jClassInfo.Properties);
 
             string classTemplate = TemplateString.ClassTemplate;
 
             classTemplate = classTemplate.Replace("{CN}", jClassInfo.Type);
             classTemplate = classTemplate.Replace("{FD}", fields);
             classTemplate = classTemplate.Replace("{PROP}", properties);
-            classTemplate = classTemplate.Replace("{CONS}", constructor);
+            //classTemplate = classTemplate.Replace("{CONS}", constructor);
 
             File.WriteAllText("..//..//temp.txt", classTemplate);
 

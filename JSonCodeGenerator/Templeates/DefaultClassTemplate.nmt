@@ -1,3 +1,4 @@
+[JsonObject(MemberSerialization.OptOut)]
 class {CN}
 {
     #region Fields
@@ -10,15 +11,4 @@ class {CN}
     
     #endregion
 
-	#region Constructors
-
-	public {CN}()
-	{}
-
-	public {CN}(JObject jObject)
-	{
-		{CONS}
-	}
-
-    #endregion	
 }

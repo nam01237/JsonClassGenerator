@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Test
 {
-	class SubData
+	[JsonObject(MemberSerialization.OptOut)]
+class Data
 {
     #region Fields
 	
@@ -18,19 +20,5 @@ namespace Test
     
     #endregion
 
-	#region Constructors
-
-	public SubData()
-	{}
-
-	public SubData(JObject jObject)
-	{
-		
-		Name = (string)jObject["name"];
-		Age = (int?)jObject["age"];
-		Birth = (int?)jObject["birth"];
-	}
-
-    #endregion	
 }
 }

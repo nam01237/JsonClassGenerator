@@ -1,4 +1,5 @@
-class Book
+[JsonObject(MemberSerialization.OptOut)]
+class BookInfo
 {
     #region Fields
 	
@@ -12,17 +13,4 @@ class Book
     
     #endregion
 
-	#region Constructors
-
-	public Book()
-	{}
-
-	public Book(JObject jObject)
-	{
-		
-		Name = (string)jObject["name"];
-		Price = (int?)jObject["price"];
-	}
-
-    #endregion	
 }

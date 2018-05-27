@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JsonObjectGenerator.analyze;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NJsonObject.Generate;
 using NJsonObject.ObjectInfo;
@@ -39,38 +40,15 @@ namespace Test
     {
         public void foo()
         {
-            string json = TempStringReader.GetJsonString("..//..//..//temp.txt");
+            string json = TempStringReader.GetJsonString("..//..//..//book.txt");
 
-            JObject jObject = JObject.Parse(json);
+            Book book = JsonConvert.DeserializeObject<Book>(json);
 
-            Root root = new Root(jObject);
+            Console.WriteLine(book.Name);
+            Console.WriteLine(book.Books[0].Name);
+            Console.WriteLine(book.Books[0].Price);
 
-            Console.WriteLine(root.LastBuildDate);
-            Console.WriteLine(root.Total);
-            Console.WriteLine(root.Start);
-            Console.WriteLine(root.Display);
-            Console.WriteLine(root.Type.Name);
-            Console.WriteLine(root.Type.Age);
-            foreach (var item in root.Itmes2)
-            {
-                Console.Write(item + ", ");
-            }
 
-            Console.WriteLine();
-
-            foreach (var item in root.Items)
-            {
-                Console.WriteLine(item.Title);
-                Console.WriteLine(item.Link);
-                Console.WriteLine(item.Category);
-                Console.WriteLine(item.Description);
-                Console.WriteLine(item.Telephone);
-                Console.WriteLine(item.Address);
-                Console.WriteLine(item.RoadAddress);
-                Console.WriteLine(item.Mapx);
-                Console.WriteLine(item.Mapy);
-
-            }
         }
     }
 
