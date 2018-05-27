@@ -11,7 +11,7 @@ Json 형식문자열을 입력받아 같은 형식의 Json 데이터를 파싱�
 
 ***
 ### 사용법
-![jc1](https://user-images.githubusercontent.com/34447880/40353748-310449e2-5ded-11e8-8943-f0c264d00881.PNG)
+![jc5](https://user-images.githubusercontent.com/34447880/40582420-31902f44-61b1-11e8-96ea-0f8f7286bff0.PNG)
 1. 'Json 문자열' TextBox에 원하는 Json 형식 문자열을 입력합니다.
 2. 멤버로 Property / Field 선언을 선택합니다. (둘다 선택가능, 형식 편집가능)
 3. '생성' 버튼을 누르면 클래스 코드를 만들어 줍니다. 
@@ -23,8 +23,10 @@ Json 형식문자열을 입력받아 같은 형식의 Json 데이터를 파싱�
 ***
 ### 생선된 cs파일 
 
-![jc3](https://user-images.githubusercontent.com/34447880/40354697-6e0aa3d4-5def-11e8-80bb-80a57685226f.PNG)
-![jc4](https://user-images.githubusercontent.com/34447880/40354680-67f0965c-5def-11e8-9515-40e3058d3732.PNG)
+![jc6](https://user-images.githubusercontent.com/34447880/40582426-a7cfc642-61b1-11e8-82ee-75b48105582e.PNG)
+![jc7](https://user-images.githubusercontent.com/34447880/40582427-a7fadbf2-61b1-11e8-8b11-65f18510b468.PNG)
+![jc8](https://user-images.githubusercontent.com/34447880/40582418-3130632a-61b1-11e8-96e6-fbc401755c11.PNG)
+![jc9](https://user-images.githubusercontent.com/34447880/40582419-3160a3b4-61b1-11e8-9dc7-b7866739ddcb.PNG)
 
 ***
 ### 주의사항
