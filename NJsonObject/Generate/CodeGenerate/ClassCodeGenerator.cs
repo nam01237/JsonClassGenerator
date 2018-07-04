@@ -9,6 +9,11 @@ namespace NJsonObject.Generate
     public class ClassCodeGenerator
     {
 
+        public static void GenerateClassCode(string fieldFormatString, JClassInfo jClassInfo)
+        {
+
+        }
+
         public static void GenerateClassCode(string fieldFormat, string propertyFormat, JClassInfo jClassInfo, int declareMember)
         {
             string fields = "";
@@ -21,16 +26,11 @@ namespace NJsonObject.Generate
             if ((declareMember & (int) DeclareContent.Property) == (int) DeclareContent.Property)
                 properties = CreateMemberString(jClassInfo.Properties, propertyFormat, true);
 
-            //jClassInfo.Properties.ConvertAll(x => x.Name = char.ToUpper(x.Name[0]) + x.Name.Substring(1));
-
-           // string constructor = CreateConstructorString(jClassInfo.Properties);
-
             string classTemplate = TemplateString.ClassTemplate;
 
             classTemplate = classTemplate.Replace("{CN}", jClassInfo.Type);
             classTemplate = classTemplate.Replace("{FD}", fields);
             classTemplate = classTemplate.Replace("{PROP}", properties);
-            //classTemplate = classTemplate.Replace("{CONS}", constructor);
 
             File.WriteAllText("..//..//temp.txt", classTemplate);
 

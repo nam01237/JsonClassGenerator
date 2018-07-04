@@ -10,6 +10,7 @@ namespace NJsonObject.Generate.CodeGenerate
 {
     public class ClassFileCreater
     {
+
         public static void CreateClassFile(JClassInfo jClassInfo, string path, string nameSpace)
         {
             foreach (var item in jClassInfo.Properties)

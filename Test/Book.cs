@@ -14,10 +14,10 @@ namespace Test
 
         #region Properties 
 
-        public string Name { get; set; }
-        public Data Data { get; set; }
-        public List<string> Friends { get; set; }
-        public List<BookInfo> Books { get; set; }
+        private string Name { get; set; }
+        private Data Data { get; set; }
+        private List<string> Friends { get; set; }
+        private List<BookInfo> Books { get; set; }
 
         #endregion
 

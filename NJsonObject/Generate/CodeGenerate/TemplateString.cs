@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace NJsonObject.Generate
 {
@@ -26,6 +27,30 @@ namespace NJsonObject.Generate
             RefTypeListInit = File.ReadAllText(TEMPLATE_PATH + "\\RefTypeListInit.nmt");
         }
 
-        
+        public static void SelectTemplate(string path)
+        {
+            FileInfo templateInfo = new FileInfo(path);
+
+            if (templateInfo.Extension != "nmt")
+            {
+                throw new InvalidTemplateFile("nmt 확장자 형식의 파일 경로를 지정 해 주세요");
+            }
+
+            string templateString = File.ReadAllText(path);
+        }
+
     }
+ 
+    public class InvalidTemplateFile : Exception
+    {
+        public InvalidTemplateFile()
+        {
+        }
+
+        public InvalidTemplateFile(string message) : base(message)
+        {
+            
+        }
+    }
+
 }

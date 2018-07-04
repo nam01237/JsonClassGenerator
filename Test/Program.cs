@@ -15,8 +15,10 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            goo g = new goo(); ;
-            g.foo();
+            foo();
+
+            //goo g = new goo(); ;
+           //g.foo();
 
             //string json = TempStringReader.GetJsonString("..//..//..//samplej2.txt");
             
@@ -34,22 +36,23 @@ namespace Test
             //Console.WriteLine(jc2.Properties[1]);
         }
 
+        public static void foo()
+        {
+            string json = TempStringReader.GetJsonString("..//..//sample.json");
+
+            TestClass test = JsonConvert.DeserializeObject<TestClass>(json);
+
+            test.TestFields();
+        }
+
     }
+
+
+
 
     public class goo
     {
-        public void foo()
-        {
-            string json = TempStringReader.GetJsonString("..//..//..//book.txt");
 
-            Book book = JsonConvert.DeserializeObject<Book>(json);
-
-            Console.WriteLine(book.Name);
-            Console.WriteLine(book.Books[0].Name);
-            Console.WriteLine(book.Books[0].Price);
-
-
-        }
     }
 
 }
