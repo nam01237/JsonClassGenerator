@@ -26,25 +26,53 @@ namespace JSonCodeGenerator.Controls
 
         private void btn_Generate_Click(object sender, EventArgs e)
         {
-            int declare = 0;
+            DeclareOption declareContent = 0;
 
-            if (cbx_Property.Checked)
-                declare |= (int)DeclareContent.Property;
-            if (cbx_Filed.Checked)
-                declare |= (int)DeclareContent.Filed;
+            if (!cb_Custom.Checked)
+            {
+                if (rb_Default.Checked)
+                    declareContent |= DeclareOption.Default;
+                else if (rb_Private.Checked)
+                    declareContent |= DeclareOption.Private;
+                else if (rb_Protected.Checked)
+                    declareContent |= DeclareOption.Protected;
+                else if (rb_Public.Checked)
+                    declareContent |= DeclareOption.Public;
 
-            GenerateButtonClickedEventArgs args = new GenerateButtonClickedEventArgs(txt_JsonString.Text, txt_FeildFormat.Text, txt_PropertyFormat.Text, declare);
+                if (rb_NormalVariable.Checked)
+                    declareContent |= DeclareOption.NormalField;
+                else if (rb_Property.Checked)
+                    declareContent |= DeclareOption.Property;
 
-            OnGenerateButtonClicked(args);
+                if (cb_Nullable.Checked)
+                    declareContent |= DeclareOption.Nullable;
+
+                if( cb_UpperFirst.Checked)
+                    declareContent |= DeclareOption.UpperFirstWord;
+
+                OnGenerateButtonClicked(txt_JsonString.Text, txt_FormatString.Text, declareContent);
+
+            }
+            else
+            {
+                declareContent |= DeclareOption.CustomFormat;
+                OnGenerateButtonClicked(txt_JsonString.Text, txt_FormatString.Text, declareContent);
+            }
+
         }
 
         public event EventHandler<GenerateButtonClickedEventArgs> GenerateButtonClicked;
 
         protected virtual void OnGenerateButtonClicked(GenerateButtonClickedEventArgs args)
         {
-            if(GenerateButtonClicked != null)
+            if (GenerateButtonClicked != null)
                 GenerateButtonClicked(this, args);
 
+        }
+
+        protected virtual void OnGenerateButtonClicked(string jsonSting, string formatString, DeclareOption declareContent)
+        {
+            OnGenerateButtonClicked(new GenerateButtonClickedEventArgs(jsonSting, formatString, declareContent));
         }
 
         private void txt_FeildFormat_TextChanged(object sender, EventArgs e)
@@ -54,26 +82,12 @@ namespace JSonCodeGenerator.Controls
 
         private void cbx_Property_CheckedChanged(object sender, EventArgs e)
         {
-            if (((CheckBox) sender).Checked)
-            {
-                txt_PropertyFormat.Enabled = true;
-            }
-            else
-            {
-                txt_PropertyFormat.Enabled = false;
-            }
+
         }
 
         private void cbx_Filed_CheckedChanged(object sender, EventArgs e)
         {
-            if (((CheckBox)sender).Checked)
-            {
-                txt_FeildFormat.Enabled = true;
-            }
-            else
-            {
-               txt_FeildFormat.Enabled = false;
-            }
+
         }
 
         private void cb_Caution_CheckedChanged(object sender, EventArgs e)
@@ -89,23 +103,29 @@ namespace JSonCodeGenerator.Controls
                 cautionForm.Close();
             }
         }
+
+        private void cb_Custom_CheckedChanged(object sender, EventArgs e)
+        {
+            txt_FormatString.Enabled = cb_Custom.Checked;
+            gb_Modifier.Enabled = !cb_Custom.Checked;
+            gb_FieldType.Enabled = !cb_Custom.Checked;
+
+        }
     }
 
     public class GenerateButtonClickedEventArgs : EventArgs
     {
         public string JsonString { get; set; }
-        public string FieldFormat { get; set; }
-        public string PropertyFormat { get; set; }
-        public int DeclareMember { get; set; }
+        public string FormatString { get; set; }
+        public DeclareOption SelectedOption { get; set; }
 
-        public GenerateButtonClickedEventArgs(){ }
+        public GenerateButtonClickedEventArgs() { }
 
-        public GenerateButtonClickedEventArgs(string jsonString, string fieldFormat, string propertyFormat, int declareMember)
+        public GenerateButtonClickedEventArgs(string jsonString, string formatString, DeclareOption declareOption)
         {
             JsonString = jsonString;
-            FieldFormat = fieldFormat;
-            PropertyFormat = propertyFormat;
-            DeclareMember = declareMember;
+            FormatString = formatString;
+            SelectedOption = declareOption;
         }
     }
 }

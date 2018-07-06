@@ -2,13 +2,7 @@
 class {CN}
 {
     #region Fields
-	{FD}
-	
-    #endregion
-
-    #region Properties 
-	{PROP}
-    
+	{FD}    
     #endregion
 
 }

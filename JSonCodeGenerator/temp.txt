@@ -1,16 +1,8 @@
 [JsonObject(MemberSerialization.OptOut)]
-class BookInfo
+class items1
 {
     #region Fields
-	
-	
-    #endregion
-
-    #region Properties 
-	
-	public string Name {get; set;}
-	public int? Price {get; set;}
-    
+	    
     #endregion
 
 }

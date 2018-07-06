@@ -13,9 +13,8 @@ namespace JSonCodeGenerator.Forms
     public partial class MainForm : Form
     {
         private JClassCreater _jClassCreater;
-        private string _fieldFormat;
-        private string _propertyFormat;
-        private int _declareMember;
+        private DeclareOption _declareOption;
+        private string _formatString;
 
         public MainForm()
         {
@@ -36,6 +35,7 @@ namespace JSonCodeGenerator.Forms
         private void usc_Input_GenerateButtonClicked(object sender, Controls.GenerateButtonClickedEventArgs e)
         {
             JObject jObject;
+
             try
             {
                 jObject = JObject.Parse(e.JsonString);
@@ -44,15 +44,15 @@ namespace JSonCodeGenerator.Forms
             {
                 MessageBox.Show("json object 생성중에 예외 발생\n" + exception.Message, "알림");
                 return;
-            }
-
-            _fieldFormat = e.FieldFormat;
-            _propertyFormat = e.PropertyFormat;
-            _declareMember = e.DeclareMember;
+            };
 
             JClassInfo temp = _jClassCreater.Create(jObject);
             ClassInfoTreeNode classInfoTreeNode = new ClassInfoTreeNode(temp);
-            //classInfoTreeNode.ClassCode = ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat,(JClassInfo) classInfoTreeNode.JInfo);
+
+            _declareOption = e.SelectedOption;
+            _formatString = e.FormatString;
+
+            Debug.WriteLine(_formatString);
 
             SetNode(classInfoTreeNode);
 
@@ -66,7 +66,7 @@ namespace JSonCodeGenerator.Forms
             #region
             if (node.JInfo is JClassInfo)
             {
-                 ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)node.JInfo, _declareMember);
+                 ClassCodeGenerator.GenerateClassCode((JClassInfo)node.JInfo, _declareOption, _formatString);
                 node.ClassCode = ((JClassInfo) node.JInfo).ClassCode;
 
                 foreach (JInfo item in ((JClassInfo)node.JInfo).Properties)
@@ -128,20 +128,18 @@ namespace JSonCodeGenerator.Forms
                     }
 
                     parent.Text = parentInfo.ToString();
-                    ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat,
-                      (JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo , _declareMember);
+                    ClassCodeGenerator.GenerateClassCode((JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo, _declareOption, _formatString);
                     parent.ClassCode = ((JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo).ClassCode;
                 }
                 else
                 {
-                    ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat,
-                        (JClassInfo)parentInfo, _declareMember);
+                    ClassCodeGenerator.GenerateClassCode((JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo, _declareOption, _formatString);
                     parent.ClassCode = ((JClassInfo) parentInfo).ClassCode;
                 }
             }
 
             node.Text = node.JInfo.ToString();
-            ClassCodeGenerator.GenerateClassCode(_fieldFormat, _propertyFormat, (JClassInfo)node.JInfo, _declareMember);
+            ClassCodeGenerator.GenerateClassCode((JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo, _declareOption, _formatString);
             node.ClassCode = ((JClassInfo)node.JInfo).ClassCode;
 
             usc_CodeViewer.SetCodeText(node.ClassCode);
