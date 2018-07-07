@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using JsonObjectGenerator.analyze;
 using JSonCodeGenerator.Forms;
 using NJsonObject;
-using NJsonObject.Generate;
+using System.Diagnostics;
 
 namespace JSonCodeGenerator.Controls
 {
@@ -47,7 +39,7 @@ namespace JSonCodeGenerator.Controls
                 if (cb_Nullable.Checked)
                     declareContent |= DeclareOption.Nullable;
 
-                if( cb_UpperFirst.Checked)
+                if (cb_UpperFirst.Checked)
                     declareContent |= DeclareOption.UpperFirstWord;
 
                 OnGenerateButtonClicked(txt_JsonString.Text, txt_FormatString.Text, declareContent);
@@ -55,7 +47,16 @@ namespace JSonCodeGenerator.Controls
             }
             else
             {
+                Debug.WriteLine("Generate 버튼 누름 - 커스텀");
+
                 declareContent |= DeclareOption.CustomFormat;
+
+                if (cb_Nullable.Checked)
+                    declareContent |= DeclareOption.Nullable;
+
+                if (cb_UpperFirst.Checked)
+                    declareContent |= DeclareOption.UpperFirstWord;
+
                 OnGenerateButtonClicked(txt_JsonString.Text, txt_FormatString.Text, declareContent);
             }
 

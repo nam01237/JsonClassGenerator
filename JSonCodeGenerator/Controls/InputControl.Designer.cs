@@ -42,11 +42,11 @@
             this.rb_Property = new System.Windows.Forms.RadioButton();
             this.rb_NormalVariable = new System.Windows.Forms.RadioButton();
             this.gb_Etc = new System.Windows.Forms.GroupBox();
+            this.cb_UpperFirst = new System.Windows.Forms.CheckBox();
             this.cb_Nullable = new System.Windows.Forms.CheckBox();
             this.gb_Custom = new System.Windows.Forms.GroupBox();
             this.txt_FormatString = new System.Windows.Forms.TextBox();
             this.cb_Custom = new System.Windows.Forms.CheckBox();
-            this.cb_UpperFirst = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.gb_Modifier.SuspendLayout();
             this.gb_FieldType.SuspendLayout();
@@ -197,10 +197,22 @@
             this.gb_Etc.TabStop = false;
             this.gb_Etc.Text = "기타";
             // 
+            // cb_UpperFirst
+            // 
+            this.cb_UpperFirst.AutoSize = true;
+            this.cb_UpperFirst.Checked = true;
+            this.cb_UpperFirst.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_UpperFirst.Location = new System.Drawing.Point(6, 20);
+            this.cb_UpperFirst.Name = "cb_UpperFirst";
+            this.cb_UpperFirst.Size = new System.Drawing.Size(100, 16);
+            this.cb_UpperFirst.TabIndex = 1;
+            this.cb_UpperFirst.Text = "첫문자 대문자";
+            this.cb_UpperFirst.UseVisualStyleBackColor = true;
+            // 
             // cb_Nullable
             // 
             this.cb_Nullable.AutoSize = true;
-            this.cb_Nullable.Location = new System.Drawing.Point(7, 21);
+            this.cb_Nullable.Location = new System.Drawing.Point(126, 20);
             this.cb_Nullable.Name = "cb_Nullable";
             this.cb_Nullable.Size = new System.Drawing.Size(70, 16);
             this.cb_Nullable.TabIndex = 0;
@@ -226,7 +238,7 @@
             this.txt_FormatString.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_FormatString.Size = new System.Drawing.Size(236, 82);
             this.txt_FormatString.TabIndex = 1;
-            this.txt_FormatString.Text = "[JsonProperty]\r\nprivate {TYPE} {NAME} { get; set;}";
+            this.txt_FormatString.Text = "[JsonProperty]\r\nprivate {TYPE} {NAME} { get; set; }";
             // 
             // cb_Custom
             // 
@@ -238,16 +250,6 @@
             this.cb_Custom.Text = "사용자지정 필드 형식 사용";
             this.cb_Custom.UseVisualStyleBackColor = true;
             this.cb_Custom.CheckedChanged += new System.EventHandler(this.cb_Custom_CheckedChanged);
-            // 
-            // cb_UpperFirst
-            // 
-            this.cb_UpperFirst.AutoSize = true;
-            this.cb_UpperFirst.Location = new System.Drawing.Point(126, 21);
-            this.cb_UpperFirst.Name = "cb_UpperFirst";
-            this.cb_UpperFirst.Size = new System.Drawing.Size(100, 16);
-            this.cb_UpperFirst.TabIndex = 1;
-            this.cb_UpperFirst.Text = "첫문자 대문자";
-            this.cb_UpperFirst.UseVisualStyleBackColor = true;
             // 
             // InputControl
             // 

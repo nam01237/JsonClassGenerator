@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Text;
 using NJsonObject.ObjectInfo;
 
@@ -11,41 +9,39 @@ namespace NJsonObject.Generate
 
         public static void GenerateClassCode(JClassInfo jClassInfo, DeclareOption declareOption, string formatString)
         {
-            string fieldsString;
+            string fieldsString = "";
 
-            if ( (declareOption & DeclareOption.CustomFormat) == DeclareOption.CustomFormat)
+            if ((declareOption & DeclareOption.CustomFormat) == DeclareOption.CustomFormat)
             {
-                if((declareOption & DeclareOption.UpperFirstWord) == DeclareOption.UpperFirstWord)
-                    fieldsString = CreateMemberString(jClassInfo.Properties, formatString, true);
-                else
-                    fieldsString = CreateMemberString(jClassInfo.Properties, formatString);
+                fieldsString = CreateMemberString(jClassInfo.Properties, formatString, declareOption);
             }
-        }
+            else
+            {
+                StringBuilder optionalFormat = new StringBuilder();
 
-        public static void GenerateClassCode(string fieldFormat, string propertyFormat, JClassInfo jClassInfo, int declareMember)
-        {
-            string fields = "";
+                optionalFormat.Append(SetModifider(declareOption));
+                optionalFormat.Append(" {TYPE}");
+                optionalFormat.Append(" {NAME} ");
 
-            if ((declareMember & (int) DeclareOption.NormalField) == (int) DeclareOption.NormalField)
-                fields = CreateMemberString(jClassInfo.Properties, fieldFormat);
+                if ((declareOption & DeclareOption.Property) == DeclareOption.Property)
+                    optionalFormat.Append(" {get; set;}");
+                else if ((declareOption & DeclareOption.NormalField) == DeclareOption.NormalField)
+                    optionalFormat.Append(";");
 
-            string properties = "";
+                fieldsString = CreateMemberString(jClassInfo.Properties, optionalFormat.ToString(), declareOption);
 
-            if ((declareMember & (int) DeclareOption.Property) == (int) DeclareOption.Property)
-                properties = CreateMemberString(jClassInfo.Properties, propertyFormat, true);
+            }
 
             string classTemplate = TemplateString.ClassTemplate;
 
+            classTemplate = classTemplate.Replace("{FD}", fieldsString);
             classTemplate = classTemplate.Replace("{CN}", jClassInfo.Type);
-            classTemplate = classTemplate.Replace("{FD}", fields);
-            classTemplate = classTemplate.Replace("{PROP}", properties);
 
-            File.WriteAllText("..//..//temp.txt", classTemplate);
-
-            jClassInfo.ClassCode =  classTemplate;
+            jClassInfo.ClassCode = classTemplate;
         }
 
-        private static string CreateMemberString(List<JInfo> members, string formatString, bool upperFirst = false)
+
+        private static string CreateMemberString(List<JInfo> members, string formatString, DeclareOption declareOption)
         {
             StringBuilder fieldString = new StringBuilder();
 
@@ -53,15 +49,19 @@ namespace NJsonObject.Generate
             {
                 string tempString = formatString;
 
+                if ((declareOption & DeclareOption.Nullable) == DeclareOption.Nullable)
+                {
+                    if (item.Type == SharpType.Bool || item.Type == SharpType.Int || item.Type == SharpType.Double)
+                        tempString = tempString.Replace("{TYPE}", "{TYPE}?");
+                }
+
                 tempString = tempString.Replace("{TYPE}", item.Type);
                 int nameStart = tempString.IndexOf("{NAME}");
 
-                if (!upperFirst)
-                    tempString = tempString.Replace("{NAME}", item.Name);
+                if ((declareOption & DeclareOption.UpperFirstWord) == DeclareOption.UpperFirstWord)
+                    tempString = tempString.Replace("{NAME}", (char.ToUpper(item.Name[0]) + item.Name.Substring(1)));
                 else
-                    tempString = tempString.Replace("{NAME}", (char.ToUpper(item.Name[0]) + item.Name.Substring(1)) );
-
-                //tempString = tempString.Replace("{MNAME}", item.UsetDefineName);
+                    tempString = tempString.Replace("{NAME}", item.Name);
 
                 item.UsetDefineName = ExtractName(tempString, nameStart);
                 fieldString.AppendLine();
@@ -80,12 +80,12 @@ namespace NJsonObject.Generate
 
             int index = nameIndex;
 
-            while(true)
+            while (true)
             {
                 index--;
                 string temp = declareString.Substring(index, 1);
 
-                if ( temp == " ")
+                if (temp == " ")
                     break;
                 else
                 {
@@ -93,14 +93,14 @@ namespace NJsonObject.Generate
                 }
             }
 
-            
+
             index = nameIndex;
-            while(true)
+            while (true)
             {
                 string temp = declareString.Substring(index, 1);
                 index++;
 
-                if (temp == " " || temp == ";" )
+                if (temp == " " || temp == ";")
                     break;
                 else
                 {
@@ -111,10 +111,24 @@ namespace NJsonObject.Generate
             return name.ToString();
         }
 
+        public static string SetModifider(DeclareOption declareOption)
+        {
+            if ((declareOption & DeclareOption.Private) == DeclareOption.Private)
+                return "[JsonProperty]private";
+
+            if ((declareOption & DeclareOption.Protected) == DeclareOption.Protected)
+                return "[JsonProperty]protected";
+
+            if ((declareOption & DeclareOption.Public) == DeclareOption.Public)
+                return "public";
+
+            return "";
+        }
+
 
 
     }
 
-    
+
 
 }

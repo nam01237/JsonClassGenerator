@@ -11,8 +11,8 @@ namespace NJsonObject
         Protected = 0x8,
         Default = 0x10,
         Private = 0x20,
-        Nullable = 0x30,
-        CustomFormat = 0x40,
-        UpperFirstWord = 0x50
+        Nullable = 0x40,
+        CustomFormat = 0x80,
+        UpperFirstWord = 0x100
     }
 }

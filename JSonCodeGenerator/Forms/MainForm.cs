@@ -52,8 +52,6 @@ namespace JSonCodeGenerator.Forms
             _declareOption = e.SelectedOption;
             _formatString = e.FormatString;
 
-            Debug.WriteLine(_formatString);
-
             SetNode(classInfoTreeNode);
 
             usc_CodeViewer.ClearTreeView();
@@ -106,7 +104,6 @@ namespace JSonCodeGenerator.Forms
 
             ClassInfoTreeNode parent = (ClassInfoTreeNode)node.Parent;
 
-
             InputBox inputBox = new InputBox();
 
             if (inputBox.ShowDialog() != DialogResult.OK)
@@ -133,14 +130,16 @@ namespace JSonCodeGenerator.Forms
                 }
                 else
                 {
-                    ClassCodeGenerator.GenerateClassCode((JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo, _declareOption, _formatString);
+                    ClassCodeGenerator.GenerateClassCode((JClassInfo)parentInfo, _declareOption, _formatString);
                     parent.ClassCode = ((JClassInfo) parentInfo).ClassCode;
                 }
             }
 
+
             node.Text = node.JInfo.ToString();
-            ClassCodeGenerator.GenerateClassCode((JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo, _declareOption, _formatString);
+            ClassCodeGenerator.GenerateClassCode((JClassInfo)node.JInfo, _declareOption, _formatString);
             node.ClassCode = ((JClassInfo)node.JInfo).ClassCode;
+
 
             usc_CodeViewer.SetCodeText(node.ClassCode);
         }
