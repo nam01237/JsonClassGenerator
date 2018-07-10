@@ -1,0 +1,13 @@
+﻿
+        {
+            "title": "유안타증권",
+            "link": "http://www.myasset.com/",
+            "category": "금융서비스>주식,증권",
+            "description": "",
+            "telephone": "02-1588-2600",
+            "address": "서울특별시 중구 을지로2가 185 유안타증권 빌딩",
+            "roadAddress": "서울특별시 중구 을지로 76 유안타증권",
+            "mapx": "310636",
+            "mapy": "551982",
+	"name" : "asdf"
+        }

@@ -117,4 +117,126 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txt_JsonString.Text" xml:space="preserve">
+    <value>{
+    "lastBuildDate": "Fri, 11 May 2018 17:04:44 +0900",
+    "total": 28702,
+    "start": 1,
+    "display": 10,
+    "type" : { "age" : 19, "name" : "nam" },
+    "itmes2" : [1, 2, 3, 4, 5],
+    "items": [
+        {
+            "title": "롯데백화점",
+            "link": "http://store.lotteshopping.com/",
+            "category": "쇼핑,유통&gt;백화점",
+            "description": "지점, 상품권, 문화센터, 웨딩센터, 세일기간 안내, 롯데카드 신청, 온라인 카달로그 제공.",
+            "telephone": "02-771-2500",
+            "address": "서울특별시 중구 소공동 1",
+            "roadAddress": "서울특별시 중구 남대문로 81 롯데백화점(본점)",
+            "mapx": "310213",
+            "mapy": "551746"
+        },
+        {
+            "title": "유안타증권",
+            "link": "http://www.myasset.com/",
+            "category": "금융서비스&gt;주식,증권",
+            "description": "",
+            "telephone": "02-1588-2600",
+            "address": "서울특별시 중구 을지로2가 185 유안타증권 빌딩",
+            "roadAddress": "서울특별시 중구 을지로 76 유안타증권",
+            "mapx": "310636",
+            "mapy": "551982"
+        },
+        {
+            "title": "대우조선해양",
+            "link": "http://www.dsme.co.kr/",
+            "category": "서비스,산업&gt;기업",
+            "description": "조선 전문업체, 해양플렌트 사업, 군수선 사업 소개, 신기술, 리크루팅, 웹진 등 안내.",
+            "telephone": "02-2129-0114",
+            "address": "서울특별시 중구 다동 85",
+            "roadAddress": "서울특별시 중구 남대문로 125 대우조선해양",
+            "mapx": "310297",
+            "mapy": "552274"
+        },
+        {
+            "title": "IBK기업은행",
+            "link": "http://www.ibk.co.kr/",
+            "category": "금융서비스&gt;은행",
+            "description": "대출, 금융채권 및 소기업지원, IBK, 예금, 재형저축, 창업지원 안내.",
+            "telephone": "1588-2588",
+            "address": "서울특별시 중구 을지로2가 50",
+            "roadAddress": "서울특별시 중구 을지로 79",
+            "mapx": "310691",
+            "mapy": "552068"
+        },
+        {
+            "title": "LG생활건강",
+            "link": "http://www.lgcare.com/",
+            "category": "서비스,산업&gt;기업",
+            "description": "생활용품 생산업체, LG화장품, 주방생활용품, 모발, 욕실, 구강 용품 등 정보 제공.",
+            "telephone": "",
+            "address": "서울특별시 종로구 신문로2가 92 LG광화문빌딩",
+            "roadAddress": "서울특별시 종로구 새문안로 58 LG광화문빌딩",
+            "mapx": "309327",
+            "mapy": "552403"
+        },
+        {
+            "title": "한국화장품",
+            "link": "http://www.ihkcos.co.kr/",
+            "category": "서비스,산업&gt;기업",
+            "description": "한국화장품, 산심, 오션, 쥬단학, 시크릿네이처, A3F[on], 써니체크, 필앤커버, 칼리 등 제품 소개",
+            "telephone": "02-724-3114",
+            "address": "서울특별시 종로구 서린동 88 관정빌딩",
+            "roadAddress": "서울특별시 종로구 청계천로 35",
+            "mapx": "310213",
+            "mapy": "552386"
+        },
+        {
+            "title": "SK에너지",
+            "link": "http://www.skenergy.com/",
+            "category": "주유소&gt;SK주유소",
+            "description": "에너지, 화학 전문업체, 석유, 아스팔트, 윤활유 등 제품 안내, 서비스 제공.",
+            "telephone": "02-2121-5114",
+            "address": "서울특별시 종로구 서린동 99 SK빌딩",
+            "roadAddress": "서울특별시 종로구 종로 26 SK 서린동빌딩",
+            "mapx": "310108",
+            "mapy": "552432"
+        },
+        {
+            "title": "OCI",
+            "link": "http://www.oci.co.kr/",
+            "category": "서비스,산업&gt;기업",
+            "description": "산업화학 전문업체, 폴리실리콘, 정밀, 석유, 석탄화학 제품 및 계열사제품 등 소개.",
+            "telephone": "02-727-9500",
+            "address": "서울특별시 중구 소공동 50",
+            "roadAddress": "서울특별시 중구 소공로 94 OCI빌딩",
+            "mapx": "310120",
+            "mapy": "551724"
+        },
+        {
+            "title": "골든브릿지투자증권",
+            "link": "http://www.bridgefn.com/",
+            "category": "금융서비스&gt;주식,증권",
+            "description": "&lt;b&gt;주식&lt;/b&gt;시세, 챠트정보, 자산관리, 투자정보 및 금융상품 안내, 매매 및 해외증시, 기업분석 수록.",
+            "telephone": "02-3779-3000",
+            "address": "서울특별시 서대문구 충정로3가 222 골든브릿지빌딩 2층",
+            "roadAddress": "서울특별시 서대문구 충정로 50",
+            "mapx": "308771",
+            "mapy": "551696"
+        },
+        {
+            "title": "동국제강",
+            "link": "http://www.dongkuk.com/",
+            "category": "서비스,산업&gt;기업",
+            "description": "철강제조 생산 전문업체. 철근, 형강, 후판, 칼라강판, 럭스틸 Luxteel, 냉연, 갈바륨 등 정보 제공",
+            "telephone": "02-317-1114",
+            "address": "서울특별시 중구 수하동 66 페럼타워",
+            "roadAddress": "서울특별시 중구 을지로5길 19 FERRUM TOWER",
+            "mapx": "310424",
+            "mapy": "552119"
+        }
+    ]
+}</value>
+  </data>
 </root>

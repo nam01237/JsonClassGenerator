@@ -1,43 +1,47 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Text;
 using NJsonObject.ObjectInfo;
-using System.Diagnostics;
 
 namespace NJsonObject.Generate
 {
     public class ClassCodeGenerator
     {
 
-        public static void GenerateClassCode(string fieldFormatString, JClassInfo jClassInfo)
+        public static void GenerateClassCode(JClassInfo jClassInfo, DeclareOption declareOption, string formatString)
         {
+            string fieldsString = "";
 
-        }
+            if ((declareOption & DeclareOption.CustomFormat) == DeclareOption.CustomFormat)
+            {
+                fieldsString = CreateMemberString(jClassInfo.Properties, formatString, declareOption);
+            }
+            else
+            {
+                StringBuilder optionalFormat = new StringBuilder();
 
-        public static void GenerateClassCode(string fieldFormat, string propertyFormat, JClassInfo jClassInfo, int declareMember)
-        {
-            string fields = "";
+                optionalFormat.Append(SetModifider(declareOption));
+                optionalFormat.Append(" {TYPE}");
+                optionalFormat.Append(" {NAME} ");
 
-            if ((declareMember & (int) DeclareContent.Filed) == (int) DeclareContent.Filed)
-                fields = CreateMemberString(jClassInfo.Properties, fieldFormat);
+                if ((declareOption & DeclareOption.Property) == DeclareOption.Property)
+                    optionalFormat.Append(" {get; set;}");
+                else if ((declareOption & DeclareOption.NormalField) == DeclareOption.NormalField)
+                    optionalFormat.Append(";");
 
-            string properties = "";
+                fieldsString = CreateMemberString(jClassInfo.Properties, optionalFormat.ToString(), declareOption);
 
-            if ((declareMember & (int) DeclareContent.Property) == (int) DeclareContent.Property)
-                properties = CreateMemberString(jClassInfo.Properties, propertyFormat, true);
+            }
 
             string classTemplate = TemplateString.ClassTemplate;
 
+            classTemplate = classTemplate.Replace("{FD}", fieldsString);
             classTemplate = classTemplate.Replace("{CN}", jClassInfo.Type);
-            classTemplate = classTemplate.Replace("{FD}", fields);
-            classTemplate = classTemplate.Replace("{PROP}", properties);
 
-            File.WriteAllText("..//..//temp.txt", classTemplate);
-
-            jClassInfo.ClassCode =  classTemplate;
+            jClassInfo.ClassCode = classTemplate;
         }
 
-        private static string CreateMemberString(List<JInfo> members, string formatString, bool upperFirst = false)
+
+        private static string CreateMemberString(List<JInfo> members, string formatString, DeclareOption declareOption)
         {
             StringBuilder fieldString = new StringBuilder();
 
@@ -45,15 +49,19 @@ namespace NJsonObject.Generate
             {
                 string tempString = formatString;
 
+                if ((declareOption & DeclareOption.Nullable) == DeclareOption.Nullable)
+                {
+                    if (item.Type == SharpType.Bool || item.Type == SharpType.Int || item.Type == SharpType.Double)
+                        tempString = tempString.Replace("{TYPE}", "{TYPE}?");
+                }
+
                 tempString = tempString.Replace("{TYPE}", item.Type);
                 int nameStart = tempString.IndexOf("{NAME}");
 
-                if (!upperFirst)
-                    tempString = tempString.Replace("{NAME}", item.Name);
+                if ((declareOption & DeclareOption.UpperFirstWord) == DeclareOption.UpperFirstWord)
+                    tempString = tempString.Replace("{NAME}", (char.ToUpper(item.Name[0]) + item.Name.Substring(1)));
                 else
-                    tempString = tempString.Replace("{NAME}", (char.ToUpper(item.Name[0]) + item.Name.Substring(1)) );
-
-                tempString = tempString.Replace("{MNAME}", item.UsetDefineName);
+                    tempString = tempString.Replace("{NAME}", item.Name);
 
                 item.UsetDefineName = ExtractName(tempString, nameStart);
                 fieldString.AppendLine();
@@ -65,80 +73,6 @@ namespace NJsonObject.Generate
             return fieldString.ToString();
         }
 
-        private static string CreateConstructorString(List<JInfo> members)
-        {
-            StringBuilder constructorString = new StringBuilder();
-
-            if (members.Exists(x => x.Type.StartsWith("List")))
-            {
-                constructorString.Append("JArray array;");
-            }
-
-            foreach (var item in members)
-            {
-                string tempString;
-
-                if (item is JClassInfo)
-                {
-                    tempString = TemplateString.RefTypeInit;
-                    tempString = tempString.Replace("{TYPE}", item.Type);
-                    tempString = tempString.Replace("{NAME}", item.Name);
-                    tempString = tempString.Replace("{MNAME}", item.UsetDefineName);
-                }
-                else if (item is JArrayInfo)
-                {
-                    tempString = CreateListInitString((JArrayInfo)item);
-                }
-                else
-                {
-                    tempString = TemplateString.ValueTypeInit;
-                    tempString = tempString.Replace("{TYPE}", item.Type);
-                    tempString = tempString.Replace("{NAME}", item.Name);
-                    tempString = tempString.Replace("{MNAME}", item.UsetDefineName);
-
-                }
-
-                constructorString.AppendLine();
-                constructorString.Append("\t\t");
-                constructorString.Append(tempString);
-            }
-
-            return constructorString.ToString();
-        }
-
-        private static string CreateListInitString(JArrayInfo jArrayInfo)
-        {
-            string tempString;
-
-            if (jArrayInfo.GenericType != SharpType.Object)
-            {
-                if (jArrayInfo.ClassTypes.Count == 1)
-                {
-                    tempString = TemplateString.RefTypeListInit;
-
-                    tempString = tempString.Replace("{NAME}", jArrayInfo.Name);
-                    tempString = tempString.Replace("{MNAME}", jArrayInfo.UsetDefineName);
-                    tempString = tempString.Replace("{CN}", jArrayInfo.ClassTypes[0].Type);
-                    tempString = tempString.Replace("{GTYPE}", jArrayInfo.GenericType);
-
-                }
-                else
-                {
-                    tempString = TemplateString.ValueTypeListInit;
-
-                    tempString = tempString.Replace("{NAME}", jArrayInfo.Name);
-                    tempString = tempString.Replace("{MNAME}", jArrayInfo.UsetDefineName);
-                    tempString = tempString.Replace("{GTYPE}", jArrayInfo.GenericType);
-                }
-            }
-            else
-            {
-                tempString = $"{jArrayInfo.Name} = new List<object>()";
-            }
-
-
-            return tempString;
-        }
 
         private static string ExtractName(string declareString, int nameIndex)
         {
@@ -146,12 +80,12 @@ namespace NJsonObject.Generate
 
             int index = nameIndex;
 
-            while(true)
+            while (true)
             {
                 index--;
                 string temp = declareString.Substring(index, 1);
 
-                if ( temp == " ")
+                if (temp == " ")
                     break;
                 else
                 {
@@ -159,14 +93,14 @@ namespace NJsonObject.Generate
                 }
             }
 
-            
+
             index = nameIndex;
-            while(true)
+            while (true)
             {
                 string temp = declareString.Substring(index, 1);
                 index++;
 
-                if (temp == " " || temp == ";" )
+                if (temp == " " || temp == ";")
                     break;
                 else
                 {
@@ -174,15 +108,27 @@ namespace NJsonObject.Generate
                 }
             }
 
-            //Debug.WriteLine(name.ToString());
-
             return name.ToString();
+        }
+
+        public static string SetModifider(DeclareOption declareOption)
+        {
+            if ((declareOption & DeclareOption.Private) == DeclareOption.Private)
+                return "[JsonProperty]private";
+
+            if ((declareOption & DeclareOption.Protected) == DeclareOption.Protected)
+                return "[JsonProperty]protected";
+
+            if ((declareOption & DeclareOption.Public) == DeclareOption.Public)
+                return "public";
+
+            return "";
         }
 
 
 
     }
 
-    
+
 
 }

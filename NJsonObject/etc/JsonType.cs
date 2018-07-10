@@ -10,7 +10,7 @@ namespace NJsonObject
     {
         public const string Object = "Object";
         public const string String = "String";
-        public const string Inreger = "Integer";
+        public const string Integer = "Integer";
         public const string Boolean = "Bool";
         public const string Float = "Float";
         public const string Property = "Property";

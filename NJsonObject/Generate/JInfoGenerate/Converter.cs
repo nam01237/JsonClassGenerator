@@ -18,7 +18,7 @@ namespace NJsonObject.Generate
                 case JsonType.String:
                     convertString = SharpType.String;
                     break;
-                case JsonType.Inreger:
+                case JsonType.Integer:
                     convertString = SharpType.Int;
                     break;
                 case JsonType.Boolean:

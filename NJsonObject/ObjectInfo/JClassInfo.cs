@@ -14,12 +14,19 @@ namespace NJsonObject.ObjectInfo
             if (other == null)
                 return false;
 
-            if (this.GetType() != other.GetType())
+            if (GetType() != other.GetType())
                 return false;
+
 
             foreach (var p in Properties)
             {
                 if (! ((JClassInfo) other).Properties.Contains(p) )
+                    return false;
+            }
+
+            foreach (var p in ((JClassInfo)other).Properties)
+            {
+                if (! (Properties.Contains(p)) ) 
                     return false;
             }
 

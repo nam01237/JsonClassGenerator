@@ -12,7 +12,7 @@ namespace NJsonObject.ObjectInfo
             if (other == null)
                 return false;
 
-            if (this.GetType() != other.GetType())
+            if (GetType() != other.GetType())
                 return false;
 
             if (Name == ((JArrayInfo)other).Name && GenericType == ((JArrayInfo)other).GenericType)
