@@ -112,6 +112,13 @@ namespace JSonCodeGenerator.Controls
             gb_FieldType.Enabled = !cb_Custom.Checked;
 
         }
+
+        private void btn_ShowTemplateViewer_Click(object sender, EventArgs e)
+        {
+            TemplateViewer templateViewer = new TemplateViewer();
+
+            templateViewer.ShowDialog();
+        }
     }
 
     public class GenerateButtonClickedEventArgs : EventArgs

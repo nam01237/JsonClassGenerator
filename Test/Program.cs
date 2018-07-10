@@ -15,25 +15,7 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            goo();
-
-            //goo g = new goo(); ;
-           //g.foo();
-
-            //string json = TempStringReader.GetJsonString("..//..//..//samplej2.txt");
-            
-            //JObject jObject = JObject.Parse(json);
-            //JArray array = (JArray)jObject["items"];
-
-            //JClassCreater creater = new JClassCreater();
-
-            //JClassInfo jc1 = creater.Create((JObject)array[0]);
-            //JClassInfo jc2 = creater.Create((JObject)array[1]);
-
-            //Console.WriteLine(jc1.Equals(jc2));
-
-            //Console.WriteLine(jc2.Properties[0]);
-            //Console.WriteLine(jc2.Properties[1]);
+            soo();
         }
 
         public static void foo()
@@ -75,6 +57,18 @@ namespace Test
             {
                 Console.WriteLine(item.Name);
             }
+        }
+
+        public static void soo()
+        {
+            string json = TempStringReader.GetJsonString("..//..//..//book.txt");
+
+            JClassCreater creater = new JClassCreater();
+
+            Book book = JsonConvert.DeserializeObject<Book>(json);
+
+            book.Print();
+
         }
 
     }

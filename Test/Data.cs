@@ -5,20 +5,16 @@ using Newtonsoft.Json;
 namespace Test
 {
 	[JsonObject(MemberSerialization.OptOut)]
-class Data
+internal class Data
 {
     #region Fields
-	
-	
-    #endregion
 
-    #region Properties 
 	
-	public string Name {get; set;}
-	public int? Age {get; set;}
-	public int? Birth {get; set;}
+	[JsonProperty]private string Name  {get; set;}
+	[JsonProperty]private int Age  {get; set;}
+	[JsonProperty]private int Birth  {get; set;}    
     
-    #endregion
+	#endregion
 
 }
 }

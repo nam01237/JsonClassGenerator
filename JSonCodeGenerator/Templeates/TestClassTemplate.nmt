@@ -1,0 +1,10 @@
+[JsonObject(MemberSerialization.OptOut)]
+internal class {CN}
+{
+    #region Fields
+
+	{FD}    
+    
+	#endregion
+
+}

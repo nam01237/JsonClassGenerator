@@ -83,6 +83,12 @@
     <Compile Include="Forms\InputBox.Designer.cs">
       <DependentUpon>InputBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TemplateViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TemplateViewer.Designer.cs">
+      <DependentUpon>TemplateViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\CodeViewer.resx">
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TemplateViewer.resx">
+      <DependentUpon>TemplateViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -124,6 +133,7 @@
     <None Include="Templeates\DefaultFileTemplate.nmt" />
     <None Include="Templeates\RefTypeInit.nmt" />
     <None Include="Templeates\RefTypeListInit.nmt" />
+    <None Include="Templeates\TestClassTemplate.nmt" />
     <None Include="Templeates\ValueTypeInit.nmt" />
     <None Include="Templeates\ValueTypeListInit.nmt" />
   </ItemGroup>

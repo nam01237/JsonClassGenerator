@@ -4,22 +4,24 @@ using Newtonsoft.Json;
 
 namespace Test
 {
-    [JsonObject(MemberSerialization.OptOut)]
-    class Book
-    {
-        #region Fields
+	[JsonObject(MemberSerialization.OptOut)]
+internal class Book
+{
+    #region Fields
 
+	
+	[JsonProperty]private string Name  {get; set;}
+	[JsonProperty]private Data Data  {get; set;}
+	[JsonProperty]private List<string> Friends  {get; set;}
+	[JsonProperty]private List<BookInfo> Books  {get; set;}    
+    
+        public void Print()
+        {
+            System.Console.WriteLine(Name);
 
-        #endregion
+        }
 
-        #region Properties 
+	#endregion
 
-        private string Name { get; set; }
-        private Data Data { get; set; }
-        private List<string> Friends { get; set; }
-        private List<BookInfo> Books { get; set; }
-
-        #endregion
-
-    }
+}
 }

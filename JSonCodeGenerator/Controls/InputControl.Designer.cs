@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputControl));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_JsonString = new System.Windows.Forms.TextBox();
             this.btn_Generate = new System.Windows.Forms.Button();
@@ -47,6 +46,7 @@
             this.gb_Custom = new System.Windows.Forms.GroupBox();
             this.txt_FormatString = new System.Windows.Forms.TextBox();
             this.cb_Custom = new System.Windows.Forms.CheckBox();
+            this.btn_ShowTemplateViewer = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gb_Modifier.SuspendLayout();
             this.gb_FieldType.SuspendLayout();
@@ -74,7 +74,7 @@
             this.txt_JsonString.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_JsonString.Size = new System.Drawing.Size(440, 300);
             this.txt_JsonString.TabIndex = 0;
-            this.txt_JsonString.Text = resources.GetString("txt_JsonString.Text");
+            this.txt_JsonString.Text = "\r\n";
             // 
             // btn_Generate
             // 
@@ -251,10 +251,21 @@
             this.cb_Custom.UseVisualStyleBackColor = true;
             this.cb_Custom.CheckedChanged += new System.EventHandler(this.cb_Custom_CheckedChanged);
             // 
+            // btn_ShowTemplateViewer
+            // 
+            this.btn_ShowTemplateViewer.Location = new System.Drawing.Point(468, 13);
+            this.btn_ShowTemplateViewer.Name = "btn_ShowTemplateViewer";
+            this.btn_ShowTemplateViewer.Size = new System.Drawing.Size(126, 25);
+            this.btn_ShowTemplateViewer.TabIndex = 9;
+            this.btn_ShowTemplateViewer.Text = "템플릿 설정(&T)";
+            this.btn_ShowTemplateViewer.UseVisualStyleBackColor = true;
+            this.btn_ShowTemplateViewer.Click += new System.EventHandler(this.btn_ShowTemplateViewer_Click);
+            // 
             // InputControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_ShowTemplateViewer);
             this.Controls.Add(this.gb_Custom);
             this.Controls.Add(this.gb_Etc);
             this.Controls.Add(this.gb_Modifier);
@@ -299,5 +310,6 @@
         private System.Windows.Forms.TextBox txt_FormatString;
         private System.Windows.Forms.CheckBox cb_Custom;
         private System.Windows.Forms.CheckBox cb_UpperFirst;
+        private System.Windows.Forms.Button btn_ShowTemplateViewer;
     }
 }
