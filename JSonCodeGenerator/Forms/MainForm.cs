@@ -114,27 +114,8 @@ namespace JSonCodeGenerator.Forms
 
             if (parent != null)
             {
-                JInfo parentInfo = parent.JInfo;
-
-                if (parentInfo is JArrayInfo)
-                {
-                    if (((JArrayInfo)parentInfo).GenericType != SharpType.Object)
-                    {
-                        ((JArrayInfo)parentInfo).GenericType = inputString;
-                        ((JArrayInfo)parentInfo).SetType();
-                    }
-
-                    parent.Text = parentInfo.ToString();
-                    ClassCodeGenerator.GenerateClassCode((JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo, _declareOption, _formatString);
-                    parent.ClassCode = ((JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo).ClassCode;
-                }
-                else
-                {
-                    ClassCodeGenerator.GenerateClassCode((JClassInfo)parentInfo, _declareOption, _formatString);
-                    parent.ClassCode = ((JClassInfo) parentInfo).ClassCode;
-                }
+                SetParentClassCode(parent, inputString);
             }
-
 
             node.Text = node.JInfo.ToString();
             ClassCodeGenerator.GenerateClassCode((JClassInfo)node.JInfo, _declareOption, _formatString);
@@ -142,6 +123,29 @@ namespace JSonCodeGenerator.Forms
 
 
             usc_CodeViewer.SetCodeText(node.ClassCode);
+        }
+
+        private void SetParentClassCode(ClassInfoTreeNode parent, string inputString)
+        {
+            JInfo parentInfo = parent.JInfo;
+
+            if (parentInfo is JArrayInfo)
+            {
+                if (((JArrayInfo)parentInfo).GenericType != SharpType.Object)
+                {
+                    ((JArrayInfo)parentInfo).GenericType = inputString;
+                    ((JArrayInfo)parentInfo).SetType();
+                }
+
+                parent.Text = parentInfo.ToString();
+                ClassCodeGenerator.GenerateClassCode((JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo, _declareOption, _formatString);
+                parent.ClassCode = ((JClassInfo)((ClassInfoTreeNode)parent.Parent).JInfo).ClassCode;
+            }
+            else
+            {
+                ClassCodeGenerator.GenerateClassCode((JClassInfo)parentInfo, _declareOption, _formatString);
+                parent.ClassCode = ((JClassInfo)parentInfo).ClassCode;
+            }
         }
 
         private void usc_CodeViewer_SaveButtonClicked(object sender, SaveButtonClickedEventArgs e)
