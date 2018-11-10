@@ -15,70 +15,31 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            soo();
+            Test();
         }
 
-        public static void foo()
+        static void Test()
         {
-            string json = TempStringReader.GetJsonString("..//..//sample.json");
+            string jsonString = TempStringReader.GetJsonString("..//..//naverapi.txt");
 
-            TestClass test = JsonConvert.DeserializeObject<TestClass>(json);
+            JClassCreater jCreater = new JClassCreater();
 
-            test.TestFields();
-        }
+            NaverApi api = JsonConvert.DeserializeObject<NaverApi>(jsonString);
 
-        public static void goo()
-        {
-            string test1 = TempStringReader.GetJsonString("..//..//..//test1.txt");
-            string test2 = TempStringReader.GetJsonString("..//..//..//test2.txt");
+            Console.WriteLine(api.Display);
+            Console.WriteLine(api.LastBuildDate);
+            Console.WriteLine(api.Start);
+            Console.WriteLine(api.Total);
 
-            JClassCreater classCreater = new JClassCreater();
-
-            JObject testObject1 = JObject.Parse(test1);
-            JObject testObject2 = JObject.Parse(test2);
-
-
-            JClassInfo testInfo1 = classCreater.Create(testObject1);
-            JClassInfo testInfo2 = classCreater.Create(testObject2);
-
-
-            if( testInfo2.Equals(testInfo1) )
-                Console.WriteLine("asdf!!");
-
-
-            foreach (var item in testInfo1.Properties)
+            foreach (var item in api.Items)
             {
-                Console.WriteLine(item.Name);
+                Console.WriteLine();
+                Console.WriteLine(item.Title);
+                Console.WriteLine(item.Bloggerlink);
+                Console.WriteLine(item.Bloggername);
             }
 
-            Console.WriteLine();
-
-            foreach (var item in testInfo2.Properties)
-            {
-                Console.WriteLine(item.Name);
-            }
         }
-
-        public static void soo()
-        {
-            string json = TempStringReader.GetJsonString("..//..//..//book.txt");
-
-            JClassCreater creater = new JClassCreater();
-
-            Book book = JsonConvert.DeserializeObject<Book>(json);
-
-            book.Print();
-
-        }
-
-    }
-
-
-
-
-    public class goo
-    {
-
     }
 
 }

@@ -4,17 +4,18 @@ using Newtonsoft.Json;
 
 namespace Test
 {
-	[JsonObject(MemberSerialization.OptOut)]
-internal class Data
-{
-    #region Fields
+    [JsonObject(MemberSerialization.OptOut)]
+    class Data
+    {
+        #region Fields
 
-	
-	[JsonProperty]private string Name  {get; set;}
-	[JsonProperty]private int Age  {get; set;}
-	[JsonProperty]private int Birth  {get; set;}    
-    
-	#endregion
+        [JsonProperty] public string Title { get; set; }
+        [JsonProperty] public string Link { get; set; }
+        [JsonProperty] public string Description { get; set; }
+        [JsonProperty] public string Bloggername { get; set; }
+        [JsonProperty] public string Bloggerlink { get; set; }
+        [JsonProperty] public string Postdate { get; set; }
 
-}
+        #endregion
+    }
 }
